@@ -4,20 +4,20 @@
   </div>
   <div class="card">
     <div class="authorImageContainer">
-      <div class="authorImage" routerLink="/author"></div>
+      <div class="authorImage" [style.background-image]="'url('+author.profileImageUrl+')'" routerLink="/author" [queryParams]="{id: blog.authorId}"></div>
     </div>
     <div class="authorInfo">
-       by <span>Author Name Here</span> a student at <span>School Name Here</span>
+       by <span>{{author.fullName}}</span> a student at <span>{{author.company}}</span>
     </div>
     <div class="blogContent container">
       <div class="title">
-        A Blog Title Here
+        {{blog.title}}
       </div>
       <div class="text">
-        Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+        {{blog.content}}
       </div>
       <blockquote>
-       "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."
+        {{blog.summary}}
       </blockquote>
     </div>
   </div>

@@ -4,6 +4,11 @@ body {
   --primary-color: #98AEB6; //blue
   --secondary-color: #D9C2BA; //dark beige
   --tertiary-color: #FCEED1; //light beige
+
+  div:focus, i:focus {
+   outline: none;
+   border: 0;
+  }
 }
 
 .title {
@@ -96,4 +101,32 @@ body {
 .primaryButton:active {
 	position:relative;
 	top:1px;
+}
+
+.authorImageContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 8rem;
+  width: 8rem;
+  background-color: white;
+  border-radius: 50%;
+  margin-top: -8rem;
+  align-self: center;
+}
+
+.authorImage{
+  height: 7rem;
+  width: 7rem;
+  border-radius: 50%;
+  align-self: center;
+  background-position: center;
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+
+.authorBannerImage {
+  background: transparent;
+  height: 15rem;
+  width: 100%;
 }

@@ -6,6 +6,7 @@ import { AppComponent } from './app.component';
 import { HomepageComponent } from './homepage/homepage.component';
 import { BlogPostComponent } from './blog/blog-post/blog-post.component';
 import { AuthorProfileComponent } from './author/author-profile/author-profile.component';
+import { BlogService } from "./blog.service";
 
 @NgModule({
   declarations: [
@@ -18,7 +19,7 @@ import { AuthorProfileComponent } from './author/author-profile/author-profile.c
     BrowserModule,
     AppRoutingModule
   ],
-  providers: [],
+  providers: [BlogService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

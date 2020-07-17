@@ -1,4 +1,6 @@
 import { Component, OnInit, AfterViewInit } from '@angular/core';
+import {Blog} from '../blog/blog.model';
+import { BlogService } from "../blog.service";
 declare const M;
 
 @Component({
@@ -7,10 +9,12 @@ declare const M;
   styleUrls: ['./homepage.component.scss']
 })
 export class HomepageComponent implements OnInit, AfterViewInit {
+blogs: Blog[];
 
-  constructor() { }
+  constructor(private bs: BlogService) { }
 
   ngOnInit(): void {
+    this.blogs = this.bs.getBlogs();
   }
 
   ngAfterViewInit(): void {

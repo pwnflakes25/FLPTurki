@@ -1,11 +1,11 @@
 export interface Blog {
-
+     blogId: string;
      title: string;
      content: string;
      summary: string;
      description: string;
      imageUrl: string;
-     userID: string;
+     authorId: string;
      date: Date;
      tags: string[];
 

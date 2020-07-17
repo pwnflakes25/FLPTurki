@@ -12,25 +12,6 @@ section {
     height: 20rem;
   }
 
-  .authorImageContainer {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 8rem;
-    width: 8rem;
-    background-color: white;
-    border-radius: 50%;
-    margin-top: -8rem;
-    align-self: center;
-  }
-
-  .authorImage{
-    height: 7rem;
-    width: 7rem;
-    background-color: red;
-    border-radius: 50%;
-    align-self: center;
-  }
 
   .authorInfo {
     align-self: center;
@@ -57,6 +38,10 @@ section {
 
   .blogContent {
     padding-top: 2rem;
+  }
+
+  .authorImage{
+    cursor: pointer;
   }
 
 

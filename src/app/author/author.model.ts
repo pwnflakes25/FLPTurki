@@ -4,5 +4,4 @@ export interface Author {
   profileImageUrl: string;
   authorAbout: string;
   company: string;
-  posts: string[];
 }
