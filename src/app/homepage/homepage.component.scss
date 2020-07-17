@@ -1,0 +1,64 @@
+
+  section {
+    padding-left: 4rem;
+    padding-right: 4rem;
+  }
+
+  .blogListContainer {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: flex-start;
+  }
+
+
+.card-panel {
+
+  width: 15rem;
+  height: 15rem;
+  border-radius: 35px;
+  background: transparent;
+  box-shadow:  20px 20px 60px #d6cab2,
+             -20px -20px 60px #fffff0;
+}
+
+.card {
+  width: 26rem;
+  margin-right: 1rem;
+  height: 15rem;
+  border-radius: 35px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #D9C2BA;
+  box-shadow:  20px 20px 60px #b8a59e,
+             -20px -20px 60px #fadfd6;
+
+  .cardImg {
+    background-image: url("https://papers.co/wallpaper/papers.co-bb08-minimal-drawing-pink-illustration-art-34-iphone6-plus-wallpaper.jpg");
+    width: 40%;
+    border-radius: 35px 0px 0px 35px;
+    height: 100%;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+  }
+
+  .card-content {
+    display: flex;
+    flex-direction: column;
+    max-width: 20rem;
+  }
+
+  .heading {
+    color: #4B3B42;
+    font-size: 20px;
+  }
+
+  .date {
+    color: #9C8481;
+  }
+
+  .description {
+    color: #9C8481;
+  }
+}

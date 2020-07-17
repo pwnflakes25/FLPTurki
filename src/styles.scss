@@ -1,1 +1,99 @@
 /* You can add global styles to this file, and also import other style files */
+body {
+  //below from dark to light
+  --primary-color: #98AEB6; //blue
+  --secondary-color: #D9C2BA; //dark beige
+  --tertiary-color: #FCEED1; //light beige
+}
+
+.title {
+  font-size: 48px;
+  color: #4B3B42;
+  margin-bottom: 2rem;
+}
+
+.subTitle {
+  font-size: 36px;
+  color: var(--secondary-color);
+  margin-bottom: 1rem;
+}
+
+.text {
+  line-height: 2;
+  font-size: 18px;
+}
+
+.bigLabel {
+  font-size: 28px;
+  color: white;
+  margin: 1rem;
+}
+
+.btn-floating {
+  background-color: #FCEED1;
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 5rem !important;
+  height: 5rem !important;
+
+  .material-icons {
+    font-size: 36px;
+    text-align: center;
+  }
+
+  &:hover {
+    background-color: var(--primary-color);
+  }
+}
+
+.mainContainer {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background: linear-gradient(150.65deg, #FCEED1 0%, rgba(217, 194, 186, 0.98) 52.11%, rgba(152, 174, 182, 0.98) 100%);
+}
+
+.backArrow {
+  position: absolute;
+  color: var(--secondary-color);
+  cursor: pointer;
+  opacity: 0.8;
+}
+
+.backArrow:hover {
+  color: var(--tertiary-color);
+  opacity: 1;
+}
+
+.backArrow:active {
+  position:relative;
+  top:1px;
+}
+
+.primaryButton {
+  border-radius: 8px;
+  background: rgb(152,174,182);
+  background: linear-gradient(90deg, rgba(152,174,182,1) 19%, rgba(190,172,166,1) 36%);
+  width: 10rem;
+  height: 2rem;
+  margin-top: 8px;
+	display:inline-block;
+	cursor:pointer;
+	color: white;
+	font-size:17px;
+	padding:2px 31px;
+	text-decoration:none;
+  opacity: 0.6;
+  transition: opacity 0.8s linear;
+}
+.primaryButton:hover {
+  background: rgb(190,172,166);
+  background: linear-gradient(90deg, rgba(190,172,166,1) 0%, rgba(152,174,182,1) 100%);
+  opacity: 1;
+}
+.primaryButton:active {
+	position:relative;
+	top:1px;
+}
