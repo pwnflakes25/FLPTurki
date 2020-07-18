@@ -1,10 +1,17 @@
 import { Injectable } from '@angular/core';
 import {Blog} from './blog/blog.model';
+import { AngularFirestore, AngularFirestoreCollection, AngularFirestoreDocument} from '@angular/fire/firestore';
+import {Observable} from 'rxjs';
+import {map} from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
 })
 export class BlogService {
+  private blogsCollection: AngularFirestoreCollection<Blog>;
+  private blogDoc: AngularFirestoreDocument<Blog>;
+  $blogs: Observable<Blog[]>;
+  $blog: Observable<Blog>;
 
   blogs: Blog[] = [
    {
@@ -53,9 +60,19 @@ export class BlogService {
    },
   ]
 
-  constructor() { }
+  constructor(private af: AngularFirestore) {
+    this.blogsCollection = af.collection<Blog>('blogs');
+    this.$blogs = this.blogsCollection.snapshotChanges().pipe(
+      map(actions => actions.map(a => {
+        const data = a.payload.doc.data() as Blog;
+        const id = a.payload.doc.id;
+        return { id, ...data };
+      }))
+    );
+  }
 
   getBlogs() {
+    //to change to $blogs
     return [...this.blogs];
   }
 
@@ -80,6 +97,16 @@ export class BlogService {
       }
     });
     return userBlog;
+  }
+
+  addBlog(blog: Blog) {
+    this.blogsCollection.add(blog);
+  }
+
+  updateBlog(id: string, blog: Blog) {
+    this.blogDoc = this.af.doc<Blog>(`blogs/${id}`);
+    this.$blog = this.blogDoc.valueChanges();
+    this.blogDoc.update(blog);
   }
 
 }

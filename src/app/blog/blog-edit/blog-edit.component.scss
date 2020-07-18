@@ -1,0 +1,22 @@
+section {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+
+  .blogImage {
+    background: url("https://papers.co/wallpaper/papers.co-bb08-minimal-drawing-pink-illustration-art-34-iphone6-plus-wallpaper.jpg");
+    background-position: center;
+    background-repeat: none;
+    background-size: cover;
+    width: 100%;
+    height: 20rem;
+  }
+
+  .card {
+   margin-top: -2rem;
+   border-radius: 35px 35px 0px 0px;
+   display: flex;
+   flex-direction: column;
+   padding: 4rem;
+  }
+}

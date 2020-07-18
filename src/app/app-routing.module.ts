@@ -3,6 +3,7 @@ import { Routes, RouterModule } from '@angular/router';
 import {HomepageComponent} from './homepage/homepage.component';
 import {  BlogPostComponent } from "./blog/blog-post/blog-post.component";
 import {AuthorProfileComponent} from "./author/author-profile/author-profile.component";
+import {  } from "./blog/blog-edit/blog-edit.component";
 
 
 const routes: Routes = [
@@ -17,6 +18,10 @@ const routes: Routes = [
   {
     path: 'author',
     component: AuthorProfileComponent
+  },
+  {
+    path: 'create',
+    component: BlogEditComponent
   }
 ];
 

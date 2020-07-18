@@ -1,0 +1,11 @@
+{
+  "targets": {
+    "flpturki-cf280": {
+      "hosting": {
+        "FLPTurki": [
+          "flpturki-cf280"
+        ]
+      }
+    }
+  }
+}

@@ -5,6 +5,7 @@ import { AuthorService } from "../../author/author.service";
 import {Blog} from '../blog.model';
 import {Author} from '../../author/author.model';
 
+
 @Component({
   selector: 'app-blog-post',
   templateUrl: './blog-post.component.html',
@@ -13,6 +14,7 @@ import {Author} from '../../author/author.model';
 export class BlogPostComponent implements OnInit {
 blog: Blog;
 author: Author;
+
 
   constructor(private route: ActivatedRoute, private bs: BlogService, private as: AuthorService) { }
 
@@ -23,5 +25,8 @@ author: Author;
     this.author = this.as.getAuthorById(this.blog.authorId);
    });
   }
+
+
+
 
 }

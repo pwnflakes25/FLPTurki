@@ -26,7 +26,7 @@
             <div class="date">{{blog.date | date}}</div>
             <div class="heading">{{blog.title}}</div>
             <div class="description">{{blog.description}}</div>
-            <a class="primaryButton waves-effect" [routerLink]="['/blog']" [queryParams]="{id: blog.blogId}">Read More</a>
+            <a class="primaryButton waves-effect" [routerLink]="['/blog']" [queryParams]="{id: blog.blogId, edit: false}">Read More</a>
           </div>
         </div>
       </div>
