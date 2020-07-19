@@ -1,16 +1,17 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, AfterViewInit } from '@angular/core';
 import { Router, ActivatedRoute, ParamMap } from '@angular/router';
-import { FormGroup, FormControl } from '@angular/forms';
+import { FormGroup, FormControl, FormArray } from '@angular/forms';
 import { BlogService } from "../../blog.service";
 import {AuthService} from '../../auth/auth.service';
 import {Blog} from '../blog.model';
+declare const M;
 
 @Component({
   selector: 'app-blog-edit',
   templateUrl: './blog-edit.component.html',
   styleUrls: ['./blog-edit.component.scss']
 })
-export class BlogEditComponent implements OnInit {
+export class BlogEditComponent implements OnInit, AfterViewInit {
 blog: Blog;
 blogForm = new FormGroup({
     title: new FormControl(''),
@@ -20,7 +21,9 @@ blogForm = new FormGroup({
     imageUrl: new FormControl(''),
     authorId: new FormControl(''),
     date: new FormControl(''),
-    tags: new FormControl('')
+    tags: new FormArray([
+      new FormControl('')
+    ])
 });
 edit: boolean = false;
 
@@ -38,6 +41,11 @@ edit: boolean = false;
     });
   }
 
+  ngAfterViewInit(): void {
+    let selectElems = document.querySelectorAll('select');
+    let selectInstances = M.FormSelect.init(selectElems);
+  }
+
   async setFormValue(id: string) {
     this.blog = await this.bs.getBlogById(id);
     this.blogForm.setValue({
@@ -53,7 +61,7 @@ edit: boolean = false;
   }
 
   async onPostBlog() {
-    let user = await this.AuthService.getCurrentUser();
+    let user: any = await this.authService.getCurrentUser();
     this.blogForm.patchValue({
       authorId: user.id,
       date: new Date()
@@ -62,7 +70,7 @@ edit: boolean = false;
   }
 
   onUpdateBlog() {
-    this.bs.updateBlog(this.blog.id, this.blogForm.value);
+    this.bs.updateBlog(this.blog.blogId, this.blogForm.value);
   }
 
 }

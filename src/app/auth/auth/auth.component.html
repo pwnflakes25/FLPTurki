@@ -1,1 +1,36 @@
-<p>auth works!</p>
+<section class="landingContainer">
+  <div class="content">
+    <div class="row">
+      <div class="textContainer col s12 m6">
+       <h1>Test</h1>
+      </div>
+      <div class="carouselContainer col s12 m6">
+
+              <div class="card" *ngIf="isNewUser" [@inOutAnimation]>
+                <div class="subTitle">Sign Up</div>
+                <div class="card-content">
+                <a (click)="isNewUser = false">Already Have an Account?</a>
+                </div>
+
+              </div>
+
+              <div class="card" *ngIf="!isNewUser" [@inOutAnimation]>
+                 <div class="subTitle">Sign In</div>
+                 <div class="card-content">
+                   <form [formGroup]="loginForm">
+                     <div class="input-field col s12">
+                       <input formControlName="email" type="email">
+                       <label>email</label>
+                     </div>
+                     <div class="input-field col s12">
+                       <input formControlName="password" type="password">
+                       <label >Password</label>
+                     </div>
+                   </form>
+                   <a class="center" style="margin-top: 2rem;" (click)="isNewUser = true">Don't Have an Account Yet?</a>
+                 </div>
+              </div>
+      </div>
+    </div>
+  </div>
+</section>

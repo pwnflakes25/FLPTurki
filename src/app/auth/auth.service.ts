@@ -1,8 +1,9 @@
 import { Injectable } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { auth } from 'firebase/app';
-import {AuthorService}
-import {Observer} from 'rxjs';
+import {Author} from '../author/author.model';
+import {AuthorService} from '../author/author.service';
+import { Observer } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -11,11 +12,11 @@ export class AuthService {
 $user: Observer<any>;
 
   constructor(private auth: AngularFireAuth, private as: AuthorService) {
-    this.auth.onAuthStateChanged(user =>  {
+    this.auth.onAuthStateChanged((user: any) =>  {
       if (user) {
-        this.user = user;
+        this.$user = user;
       } else {
-        this.user = null;
+        this.$user = null;
       }
     })
 
@@ -23,12 +24,12 @@ $user: Observer<any>;
 
 
   getCurrentUser() {
-    return this.user;
+    return this.$user;
   }
 
-  signUp(email, password, fullName, profileImage, about, company) {
+async signUp(email, password, fullName, profileImage, about, company) {
         await this.auth.createUserWithEmailAndPassword(email, password)
-        .then(user => {
+        .then((user: any) => {
           // get user data from the auth trigger
           const userUid = user.uid; // The UID of the user.
           // set account  doc

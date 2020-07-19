@@ -3,7 +3,8 @@ import { Routes, RouterModule } from '@angular/router';
 import {HomepageComponent} from './homepage/homepage.component';
 import {  BlogPostComponent } from "./blog/blog-post/blog-post.component";
 import {AuthorProfileComponent} from "./author/author-profile/author-profile.component";
-import {  } from "./blog/blog-edit/blog-edit.component";
+import { BlogEditComponent } from "./blog/blog-edit/blog-edit.component";
+import {AuthComponent} from './auth/auth/auth.component';
 
 
 const routes: Routes = [
@@ -22,6 +23,10 @@ const routes: Routes = [
   {
     path: 'create',
     component: BlogEditComponent
+  },
+  {
+    path: 'auth',
+    component: AuthComponent
   }
 ];
 
