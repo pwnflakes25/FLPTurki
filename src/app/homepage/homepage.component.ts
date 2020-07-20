@@ -1,6 +1,7 @@
 import { Component, OnInit, AfterViewInit } from '@angular/core';
 import {Blog} from '../blog/blog.model';
 import { BlogService } from "../blog.service";
+import {Observable} from 'rxjs';
 declare const M;
 
 @Component({
@@ -9,7 +10,7 @@ declare const M;
   styleUrls: ['./homepage.component.scss']
 })
 export class HomepageComponent implements OnInit, AfterViewInit {
-blogs: Blog[];
+blogs: Observable<Blog[]>;
 
   constructor(private bs: BlogService) { }
 

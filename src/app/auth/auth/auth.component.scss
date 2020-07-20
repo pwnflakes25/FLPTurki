@@ -1,34 +1,37 @@
 .landingContainer{
   min-height: 100vh;
-  padding-top: 4rem;
   background: linear-gradient(150.65deg, #FCEED1 0%, rgba(217, 194, 186, 0.98) 52.11%, rgba(152, 174, 182, 0.98) 100%);
 }
 
 .content {
-  padding: 4rem;
+  padding: 1rem;
 
 
   .carouselContainer {
+    margin-top: 5rem;
     position: relative;
-    height: 30rem;
-    padding: 2rem;
+    height: 44rem;
+    padding: 1rem;
     overflow-y: hidden;
     display: flex;
     flex-direction: column;
     align-items: flex-end;
+    justify-content: center;
   }
 
   .textContainer {
+    padding: 1rem;
   }
 
   .card {
-    padding: 2rem;
     position: absolute;
-    width: 25rem;
-    right: 0.4;
+    display: flex;
+    flex-direction: column;
+    width: 80%;
     background: white;
     box-shadow:  10px 10px 20px #d6c2b7,
              -10px -10px 20px #e8d2c7;
+
 
     input {
       margin-top: 1rem;
@@ -51,6 +54,34 @@
       cursor: pointer;
     }
 
+    .buttonWrapper {
+      width: 100%;
+      display: flex;
+      justify-content: flex-end;
+      align-items: flex-end;
+    }
+
+    .btn {
+      background-color: transparent;
+      color: var(--secondary-color);
+      border-color: var(--secondary-color);
+      font-size: 30px;
+      box-shadow: none;
+    }
+
   }
+
+  @media only screen and (max-width: 600px) {
+
+    .carouselContainer {
+      width: 100%;
+      align-items: center;
+      justify-content: center;
+    }
+
+   .card {
+     width: 100%;
+   }
+ }
 
 }

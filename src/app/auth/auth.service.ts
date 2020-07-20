@@ -27,36 +27,43 @@ $user: Observer<any>;
     return this.$user;
   }
 
-async signUp(email, password, fullName, profileImage, about, company) {
-        await this.auth.createUserWithEmailAndPassword(email, password)
+async signUp(email, password, newAuthor) {
+    let result = await this.auth.createUserWithEmailAndPassword(email, password)
         .then((user: any) => {
-          // get user data from the auth trigger
-          const userUid = user.uid; // The UID of the user.
-          // set account  doc
+          console.log(user.user.uid);
+          const userUid = user.user.uid;
           const author: Author = {
-            id: userUid,
             email: email,
-            fullName: fullName,
-            profileImageUrl: profileImage,
-            authorAbout: about,
-            company: company
+            fullName: newAuthor.fullName,
+            profileImageUrl: newAuthor.profileImageUrl,
+            authorAbout: newAuthor.authorAbout,
+            company: newAuthor.company
           }
           this.as.createAuthor(userUid, author);
+          return [true, "Signed Up Successfully"];
         })
         .catch(function(error) {
          var errorCode = error.code;
          var errorMessage = error.message;
+         return [false, errorMessage];
       });
+      return result;
   }
 
-  signIn(email, password) {
-    this.auth.signInWithEmailAndPassword(email, password).catch(function(error) {
-      // Handle Errors here.
-      var errorCode = error.code;
-      var errorMessage = error.message;
-      // ...
-      return error;
-    });
+async signIn(email, password) {
+  let result =  await this.auth.signInWithEmailAndPassword(email, password)
+       .then( cred => {
+         return [true, "Logged In Successfully"];
+       })
+       .catch(function(error) {
+        // Handle Errors here.
+        var errorCode = error.code;
+        var errorMessage = error.message;
+        // ...
+        return [false, errorMessage];
+      });
+
+    return result;
   }
 
 

@@ -2,20 +2,66 @@
   <div class="content">
     <div class="row">
       <div class="textContainer col s12 m6">
-       <h1>Test</h1>
+       <h1 style="color: white;">Sign Up Now and Start Spreading Your Ideas</h1>
       </div>
       <div class="carouselContainer col s12 m6">
 
               <div class="card" *ngIf="isNewUser" [@inOutAnimation]>
-                <div class="subTitle">Sign Up</div>
+                <div class="subTitle" style="margin: 2rem;">Sign Up</div>
                 <div class="card-content">
+
+                    <mat-horizontal-stepper linear labelPosition='bottom'>
+                      <mat-step [stepControl]="signupForm">
+                        <form [formGroup]="signupForm">
+                          <ng-template matStepLabel>Account Detail </ng-template>
+                          <div class="input-field col s12">
+                            <input formControlName="email" type="email">
+                            <label>email</label>
+                          </div>
+                          <div class="input-field col s12">
+                            <input formControlName="password" type="password">
+                            <label>Password</label>
+                          </div>
+                          <div class="input-field col s12">
+                            <input formControlName="confirmPassword" type="password">
+                            <label>Confirm Password</label>
+                          </div>
+                          <div class="buttonWrapper">
+                            <button class="btn" matStepperNext type="button"> > </button>
+                          </div>
+                        </form>
+                      </mat-step>
+
+                      <mat-step [stepControl]="profileForm">
+                        <form [formGroup]="profileForm">
+                            <ng-template matStepLabel>Your profile</ng-template>
+                          <div class="input-field col s12">
+                            <input formControlName="fullName" type="text">
+                            <label>Full Name</label>
+                          </div>
+                          <div class="input-field col s12">
+                            <input formControlName="authorAbout" type="text">
+                            <label>About You</label>
+                          </div>
+                          <div class="input-field col s12">
+                            <input type="text" formControlName="company">
+                            <label >Company</label>
+                          </div>
+                          <div class="buttonWrapper">
+                             <button type="button" class="btn left" matStepperPrevious name="button"> < </button>
+                             <a class="primaryButton" (click)="onSignUp()">Sign Up</a>
+                          </div>
+                        </form>
+                      </mat-step>
+
+                    </mat-horizontal-stepper>
                 <a (click)="isNewUser = false">Already Have an Account?</a>
                 </div>
 
               </div>
 
               <div class="card" *ngIf="!isNewUser" [@inOutAnimation]>
-                 <div class="subTitle">Sign In</div>
+                 <div class="subTitle" style="margin: 2rem;">Sign In</div>
                  <div class="card-content">
                    <form [formGroup]="loginForm">
                      <div class="input-field col s12">
@@ -27,7 +73,12 @@
                        <label >Password</label>
                      </div>
                    </form>
-                   <a class="center" style="margin-top: 2rem;" (click)="isNewUser = true">Don't Have an Account Yet?</a>
+                   <div class="buttonWrapper">
+                     <a class="primaryButton" (click)="onLogIn()">Log In</a>
+                   </div>
+                   <div class="linkWrapper" style="margin-top: 1rem;">
+                      <a class="center" (click)="isNewUser = true">Don't Have an Account Yet?</a>
+                   </div>
                  </div>
               </div>
       </div>

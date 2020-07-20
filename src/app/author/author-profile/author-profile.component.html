@@ -6,34 +6,36 @@
 
     <div class="card mainCard">
 
-      <div class="authorImageContainer">
-        <div class="authorImage" [style.background-image]="'url('+author.profileImageUrl+')'"></div>
-      </div>
+      <div class="authorDetails" *ngIf="(author$ | async) as author">
 
-      <div class="authorStatus">
-        <div class="statusBox">
-          <div class="">Posts</div>
-          <div class="">15</div>
+        <div class="authorImageContainer">
+          <div class="authorImage" [style.background-image]="'url('+author.profileImageUrl+')'"></div>
         </div>
-        <div class="statusBox">
-          <div class="">Follower</div>
-          <div class="">20</div>
+
+        <div class="authorStatus">
+          <div class="statusBox">
+            <div class="">Posts</div>
+            <div class="">15</div>
+          </div>
+          <div class="statusBox">
+            <div class="">Follower</div>
+            <div class="">20</div>
+          </div>
         </div>
+
+        <div class="authorInfo">
+          <div class="subTitle center">{{author.fullName}}</div>
+          <div class="subText">{{author.authorAbout}}</div>
+        </div>
+
       </div>
-
-      <div class="authorInfo">
-        <div class="subTitle center">{{author.fullName}}</div>
-        <div class="subText">{{author.authorAbout}}</div>
-      </div>
-
-
 
       <div class="blogListContainer">
         <div class="subTitle">
           My Blogs
         </div>
 
-        <div class="card horizontal" *ngFor="let blog of blogs; let i = index;">
+        <div class="card horizontal" *ngFor="let blog of blogs$ | async; let i = index;">
           <div class="cardImg" [style.background-image]="'url('+blog.imageUrl+')'"></div>
           <div class="card-stacked">
             <div class="card-content">

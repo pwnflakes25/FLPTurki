@@ -4,6 +4,7 @@ import { FormGroup, FormControl, FormArray } from '@angular/forms';
 import { BlogService } from "../../blog.service";
 import {AuthService} from '../../auth/auth.service';
 import {Blog} from '../blog.model';
+import {Observable} from 'rxjs';
 declare const M;
 
 @Component({
@@ -12,7 +13,8 @@ declare const M;
   styleUrls: ['./blog-edit.component.scss']
 })
 export class BlogEditComponent implements OnInit, AfterViewInit {
-blog: Blog;
+blog$: Observable<Blog>;
+currentBlogId: string;
 blogForm = new FormGroup({
     title: new FormControl(''),
     description: new FormControl(''),
@@ -35,7 +37,7 @@ edit: boolean = false;
     let edit = params['edit'];
 
       if (edit) {
-       this.setFormValue(id);
+       this.fetchBlogAndFillForm(id);
       }
 
     });
@@ -46,17 +48,25 @@ edit: boolean = false;
     let selectInstances = M.FormSelect.init(selectElems);
   }
 
-  async setFormValue(id: string) {
-    this.blog = await this.bs.getBlogById(id);
+  async fetchBlogAndFillForm(id) {
+    this.blog$ = await this.bs.getBlogById(id);
+    this.blog$.subscribe((blog:any) => {
+      this.currentBlogId = blog.id;
+      this.setFormValue(blog.data);
+    })
+  }
+
+ //set form value if the blog is exisiting and it is editing
+  async setFormValue(blog: Blog) {
     this.blogForm.setValue({
-      title: this.blog.title,
-      description: this.blog.description,
-      content: this.blog.content,
-      summary: this.blog.summary,
-      imageUrl: this.blog.imageUrl,
-      authorId: this.blog.authorId,
-      date: this.blog.date,
-      tags: this.blog.tags
+      title: blog.title,
+      description: blog.description,
+      content: blog.content,
+      summary: blog.summary,
+      imageUrl: blog.imageUrl,
+      authorId: blog.authorId,
+      date: blog.date,
+      tags: blog.tags
     })
   }
 
@@ -70,7 +80,7 @@ edit: boolean = false;
   }
 
   onUpdateBlog() {
-    this.bs.updateBlog(this.blog.blogId, this.blogForm.value);
+    this.bs.updateBlog(this.currentBlogId, this.blogForm.value);
   }
 
 }
