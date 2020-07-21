@@ -8,6 +8,9 @@ export interface Blog {
      authorId: string;
      date: Date;
      tags: string[];
+     isPublished: boolean;
+     views: number;
+     likes: number;
 
     // constructor(title: string, content: string, summary: string, description: string, imageUrl: string, tags: string[], date: Date) {
     //   this.title = title;

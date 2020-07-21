@@ -2,48 +2,67 @@
   <div class="blogImage">
     <div class="backArrow"><i class="medium material-icons" [routerLink]="['../']">arrow_back</i></div>
   </div>
-  <div class="card">
-  <form [formGroup]="blogForm" class="container">
+  <div class="card mainCard">
+
+    <div [ngSwitch]="edit" class="header">
+      <div *ngSwitchCase="true" class="subTitle">
+        Edit Page
+      </div>
+      <div *ngSwitchCase="false" class="subTitle">
+        Create Page
+      </div>
+    </div>
+  <form [formGroup]="blogForm" class="">
 
       <div class="row">
         <div class="input-field col s12">
-         <input type="text" id="titleInput" formControlName="title">
+         <input placeholder="Write your blog title here..." type="text" id="titleInput" formControlName="title">
           <label class="active" for="titleInput">Title</label>
         </div>
       </div>
 
       <div class="row">
         <div class="input-field col s12">
-          <input type="text" id="descInput"  formControlName="description">
+          <input placeholder="What is your blog about...?" type="text" id="descInput"  formControlName="description">
           <label class="active" for="descInput">Description</label>
         </div>
       </div>
 
       <div class="row">
-        <div class="input-field col s12">
-          <textarea id="contentInput" formControlName="content" class="materialize-textarea"></textarea>
-           <label for="contentInput">Content..</label>
+        <div class="col s12">
+          <label for="" style="margin-bottom: 2rem;">Content</label>
+          <textarea [froalaEditor]='options' placeholder="Write your content here..." id="contentInput" formControlName="content" class="materialize-textarea"></textarea>
         </div>
       </div>
 
       <div class="row">
         <div class="input-field col s12">
-          <textarea id="summaryInput" formControlName="summary" class="materialize-textarea"></textarea>
+          <textarea placeholder="Write your summary here..." id="summaryInput" formControlName="summary" class="materialize-textarea"></textarea>
            <label for="summaryInput">Summary..</label>
         </div>
       </div>
 
-
-      <div class="input-field col s12">
-        <select multiple formArrayName="tags">
-          <option value="" disabled selected>Choose your option</option>
-          <option value="1">Option 1</option>
-          <option value="2">Option 2</option>
-          <option value="3">Option 3</option>
-        </select>
-        <label>Materialize Multiple Select</label>
+      <div class="row">
+        <div class="input-field col s6">
+          <select multiple formArrayName="tags">
+            <option value="" disabled selected>Choose your option</option>
+            <option value="1">Option 1</option>
+            <option value="2">Option 2</option>
+            <option value="3">Option 3</option>
+          </select>
+          <label>Materialize Multiple Select</label>
+        </div>
       </div>
 
+      <div [ngSwitch]="edit" class="buttonWrapper">
+      <a class="primaryButton" *ngSwitchCase="true">
+        Save
+      </a>
+      <a class="primaryButton" *ngSwitchCase="false">
+        Publish
+      </a>
+      </div>
    </form>
+
   </div>
 </section>

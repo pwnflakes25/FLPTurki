@@ -28,6 +28,11 @@ blogForm = new FormGroup({
     ])
 });
 edit: boolean = false;
+options: Object = {
+  placeholderText: 'Write your content',
+  charCounterCount: true,
+  attribution: false
+}
 
   constructor(private bs: BlogService, private route: ActivatedRoute, private authService: AuthService) { }
 

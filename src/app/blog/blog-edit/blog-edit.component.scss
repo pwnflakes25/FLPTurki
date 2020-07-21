@@ -3,7 +3,8 @@ section {
   display: flex;
   flex-direction: column;
 
-   form {
+   .header {
+     margin-bottom: 4rem;
    }
 
   .blogImage {
@@ -15,11 +16,50 @@ section {
     height: 20rem;
   }
 
-  .card {
+  .mainCard {
    margin-top: -2rem;
+   min-height: 100vh;
    border-radius: 35px 35px 0px 0px;
    display: flex;
    flex-direction: column;
    padding: 4rem;
+
+  .detailCard {
+    border-radius: 8px;
+    display: flex;
+    padding: 2rem;
+    flex-direction: column;
+    border-style: solid;
+    border-color: var(--tertiary-color);
+    box-shadow: none;
+    border-width: 4px;
+  }
+
+   .input-field {
+     margin-top: 2rem;
+   }
+
+   input, textarea {
+     margin-top: 1rem;
+     border-bottom-color: var(--tertiary-color);
+     border-bottom-width: 4px;
+
+     &:focus{
+       border-bottom-color: var(--secondary-color);
+       color: var(--secondary-color);
+       box-shadow: none;
+     }
+
+     &:focus + label {
+       color: var(--secondary-color);
+     }
+   }
+
+
+   .buttonWrapper {
+     width: 100%;
+     display: flex;
+     justify-content: flex-end;
+   }
   }
 }
