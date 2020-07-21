@@ -1,12 +1,13 @@
 <nav>
   <div class="nav-wrapper">
-    <a href="#!" class="brand-logo center">Logo</a>
+    <a href="#!" class="brand-logo center">FLP Turki x Firghi</a>
     <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
     <ul class="right hide-on-med-and-down">
       <li><a routerLink="/">Home</a></li>
-      <li><a routerLink="/auth">Sign Up</a></li>
-      <li><a>Sign In</a></li>
-      <li><a>Profile</a></li>
+      <li *ngIf="(authService.user$ | async) === null"><a routerLink="/auth">Sign Up</a></li>
+      <li *ngIf="(authService.user$ | async) === null"><a>Sign In</a></li>
+      <li *ngIf="authService.user$ | async"  (click)="onSignOut()"><a>Sign Out</a></li>
+      <li *ngIf="authService.user$ | async" (click)="goToProfile()"><a>Profile</a></li>
     </ul>
   </div>
 </nav>

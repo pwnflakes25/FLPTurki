@@ -44,24 +44,28 @@
 
       <div class="row">
         <div class="input-field col s6">
-          <select multiple formArrayName="tags">
-            <option value="" disabled selected>Choose your option</option>
-            <option value="1">Option 1</option>
-            <option value="2">Option 2</option>
-            <option value="3">Option 3</option>
+          <select multiple formControlName="tags">
+            <option value="" disabled selected>Choose Tags</option>
+            <option value="1">Health and Lifestyle</option>
+            <option value="2">Education</option>
+            <option value="3">General Advice</option>
           </select>
-          <label>Materialize Multiple Select</label>
+          <label> Choose Tags</label>
         </div>
       </div>
 
-      <div [ngSwitch]="edit" class="buttonWrapper">
-      <a class="primaryButton" *ngSwitchCase="true">
-        Save
-      </a>
-      <a class="primaryButton" *ngSwitchCase="false">
-        Publish
-      </a>
+      <div class="buttonWrapper">
+        <a class="primaryButton" (click)="onSaveBlog()"> <i class="material-icons">save</i> Save</a>
+        <div [ngSwitch]="edit" >
+        <a class="primaryButton" *ngSwitchCase="true" (click)="onUpdateBlog()">
+          <i class="material-icons">update</i> Update
+        </a>
+        <a class="primaryButton" *ngSwitchCase="false" (click)="onPublishBlog()">
+          <i class="material-icons">send</i> Publish
+        </a>
+        </div>
       </div>
+
    </form>
 
   </div>

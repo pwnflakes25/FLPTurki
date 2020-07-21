@@ -17,6 +17,7 @@ export class BlogPostComponent implements OnInit {
 blog: Blog;
 currentBlogId: string;
 author: Author;
+result;
 
 
   constructor(private route: ActivatedRoute, private bs: BlogService, private as: AuthorService) { }
@@ -24,19 +25,24 @@ author: Author;
   ngOnInit(): void {
     this.route.queryParams.subscribe(params => {
     let id = params['id'];
-    this.fetchBlogAndAuthorDetails(id);
+    this.bs.getBlogById(id).subscribe(blog => {
+      this.blog = blog;
+      console.log(this.blog);
+      this.as.getAuthorById(blog.authorId).subscribe(author => {
+        this.author = author;
+        console.log(this.author);
+      })
+    })
    });
   }
 
 
-  fetchBlogAndAuthorDetails(id) {
-     this.bs.getBlogById(id).pipe(concatMap(blog => {
-       return this.as.getAuthorById(blog.authorId).pipe(map(res => {
-          this.blog = blog;
-          this.author = res;
-      }))
-    }))
-  }
+  // fetchBlogAndAuthorDetails(id) {
+  //    this.bs.getBlogById(id).pipe(concatMap(blog => {
+  //        this.as.getAuthorById(blog.authorId).pipe(map(res => {
+  //     }))
+  //   }))
+  // }
 
 
 

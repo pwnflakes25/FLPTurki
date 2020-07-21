@@ -83,6 +83,9 @@ profileForm: FormGroup;
     let res = await this.authService.signIn(this.loginForm.value.email, this.loginForm.value.password)
     if (res[0] === false) {
       alert("Incorrect email or password!");
+    } else {
+      alert(res[1]);
+      this.router.navigate(['/']);
     }
   }
 

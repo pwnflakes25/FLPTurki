@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, AfterViewInit } from '@angular/core';
 import { BlogService } from "../../blog.service";
 import { AuthorService } from "../author.service";
 import { Blog } from "../../blog/blog.model";
@@ -11,9 +11,10 @@ import {Observable} from 'rxjs';
   templateUrl: './author-profile.component.html',
   styleUrls: ['./author-profile.component.scss']
 })
-export class AuthorProfileComponent implements OnInit {
+export class AuthorProfileComponent implements OnInit, AfterViewInit {
 blogs$: Observable<Blog[]>;
 author$: Observable<Author>;
+defaultProfilePic = "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png"
 
   constructor(private bs: BlogService, private as: AuthorService, private route: ActivatedRoute) { }
 
@@ -23,6 +24,9 @@ author$: Observable<Author>;
     this.blogs$ = this.bs.getBlogsByAuthorId(id);
     this.author$ = this.as.getAuthorById(id);
    });
+  }
+
+  ngAfterViewInit(): void {
   }
 
 }

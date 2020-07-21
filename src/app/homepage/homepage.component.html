@@ -19,14 +19,14 @@
     <div class="bigLabel">Recent Blogs</div>
     <div class="blogListContainer">
 
-      <div class="card horizontal" *ngFor="let blog of blogs; let i = index">
+      <div class="card horizontal" *ngFor="let blog of blogs | async; let i = index">
         <div class="cardImg"></div>
         <div class="card-stacked">
           <div class="card-content">
-            <div class="date">{{blog.date | date}}</div>
+            <div class="date">{{blog.date.toDate() | date}}</div>
             <div class="heading">{{blog.title}}</div>
             <div class="description">{{blog.description}}</div>
-            <a class="primaryButton waves-effect" [routerLink]="['/blog']" [queryParams]="{id: blog.blogId}">Read More</a>
+            <a class="primaryButton waves-effect" [routerLink]="['/blog']" [queryParams]="{id: blog.id}">Read More</a>
           </div>
         </div>
       </div>

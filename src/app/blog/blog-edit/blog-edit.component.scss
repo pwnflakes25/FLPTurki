@@ -2,6 +2,7 @@ section {
   min-height: 100vh;
   display: flex;
   flex-direction: column;
+  padding: 0px;
 
    .header {
      margin-bottom: 4rem;
@@ -23,21 +24,18 @@ section {
    display: flex;
    flex-direction: column;
    padding: 4rem;
+   padding-bottom: 10rem;
 
-  .detailCard {
-    border-radius: 8px;
-    display: flex;
-    padding: 2rem;
-    flex-direction: column;
-    border-style: solid;
-    border-color: var(--tertiary-color);
-    box-shadow: none;
-    border-width: 4px;
-  }
 
    .input-field {
      margin-top: 2rem;
    }
+
+   .contentText {
+     font-size: 20px;
+     color: var(--secondary-color);
+   }
+
 
    input, textarea {
      margin-top: 1rem;
@@ -46,7 +44,6 @@ section {
 
      &:focus{
        border-bottom-color: var(--secondary-color);
-       color: var(--secondary-color);
        box-shadow: none;
      }
 
@@ -55,11 +52,36 @@ section {
      }
    }
 
+   textarea {
+     min-height: 10rem;
+   }
+
+   select {
+     border-bottom-color: var(--tertiary-color) !important;
+     border-bottom-width: 4px;
+     box-shadow: none;
+
+    &:focus {
+      border-bottom-color: var(--secondary-color);
+      color: var(--secondary-color);
+      box-shadow: none;
+    }
+   }
+
 
    .buttonWrapper {
      width: 100%;
      display: flex;
      justify-content: flex-end;
+   }
+
+   .primaryButton {
+     display: flex;
+     flex-direction: column;
+     flex-wrap: wrap;
+     justify-content: center;
+     align-items: flex-start;
+     margin-right: 1rem;
    }
   }
 }

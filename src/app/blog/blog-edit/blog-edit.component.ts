@@ -4,7 +4,8 @@ import { FormGroup, FormControl, FormArray } from '@angular/forms';
 import { BlogService } from "../../blog.service";
 import {AuthService} from '../../auth/auth.service';
 import {Blog} from '../blog.model';
-import {Observable} from 'rxjs';
+import {Observable, Subscription} from 'rxjs';
+import {map} from 'rxjs/operators';
 declare const M;
 
 @Component({
@@ -15,6 +16,7 @@ declare const M;
 export class BlogEditComponent implements OnInit, AfterViewInit {
 blog$: Observable<Blog>;
 currentBlogId: string;
+private currentUser;
 blogForm = new FormGroup({
     title: new FormControl(''),
     description: new FormControl(''),
@@ -23,18 +25,23 @@ blogForm = new FormGroup({
     imageUrl: new FormControl(''),
     authorId: new FormControl(''),
     date: new FormControl(''),
-    tags: new FormArray([
-      new FormControl('')
-    ])
+    tags: new FormControl('')
 });
 edit: boolean = false;
 options: Object = {
   placeholderText: 'Write your content',
   charCounterCount: true,
-  attribution: false
+  attribution: false,
+  paragraphStyles: {
+   class1: 'contentText',
+   class2: 'Class 2'
+ }
 }
+selectInstance: any;
+selectedValues: any;
 
-  constructor(private bs: BlogService, private route: ActivatedRoute, private authService: AuthService) { }
+
+  constructor(private bs: BlogService, private route: ActivatedRoute, private authService: AuthService, private router: Router) { }
 
   ngOnInit(): void {
     this.route.queryParams.subscribe(params => {
@@ -43,14 +50,18 @@ options: Object = {
 
       if (edit) {
        this.fetchBlogAndFillForm(id);
-      }
+     }
+
+      this.authService.getCurrentUser().subscribe(user => {
+        this.currentUser = user;
+      })
 
     });
   }
 
   ngAfterViewInit(): void {
     let selectElems = document.querySelectorAll('select');
-    let selectInstances = M.FormSelect.init(selectElems);
+    this.selectInstance = M.FormSelect.init(selectElems);
   }
 
   async fetchBlogAndFillForm(id) {
@@ -71,20 +82,62 @@ options: Object = {
       imageUrl: blog.imageUrl,
       authorId: blog.authorId,
       date: blog.date,
-      tags: blog.tags
+      tags: blog.tags,
+      isPublished: blog.isPublished,
+      likes: blog.likes
     })
   }
 
-  async onPostBlog() {
-    let user: any = await this.authService.getCurrentUser();
+  async onPublishBlog() {
     this.blogForm.patchValue({
-      authorId: user.id,
-      date: new Date()
+      authorId: this.currentUser.uid,
+      date: new Date(),
+      isPublished: true,
+      likes: 0,
+      tags: this.blogForm.value.tags
     })
-    this.bs.addBlog(this.blogForm.value);
+    console.log()
+    try {
+      this.bs.addBlog(this.blogForm.value);
+      alert("Success!");
+      this.router.navigate(['/'])
+    } catch (error) {
+      alert(error);
+    }
+
+    console.log(this.blogForm.value);
+
+  }
+
+
+  //basically same like update or post but publish is false
+  onSaveBlog() {
+    //if it is on edit, and user click save, we want it to not be published anymore
+    if (this.edit) {
+      this.blogForm.patchValue({
+        authorId: this.currentUser.uid,
+        date: new Date(),
+        isPublished: false
+      })
+     this.bs.updateBlog(this.currentBlogId, this.blogForm.value);
+    }
+    // if it is not edit, then add like usual but isPublished is false
+    else {
+      this.blogForm.patchValue({
+        authorId: this.currentUser.uid,
+        date: new Date(),
+        isPublished: false,
+        likes: 0,
+        tags: this.blogForm.value.tags
+      })
+     this.bs.addBlog(this.blogForm.value);
+    }
   }
 
   onUpdateBlog() {
+    this.blogForm.patchValue({
+      date: new Date()
+    })
     this.bs.updateBlog(this.currentBlogId, this.blogForm.value);
   }
 

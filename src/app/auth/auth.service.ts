@@ -3,34 +3,26 @@ import { AngularFireAuth } from '@angular/fire/auth';
 import { auth } from 'firebase/app';
 import {Author} from '../author/author.model';
 import {AuthorService} from '../author/author.service';
-import { Observer } from 'rxjs';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
-$user: Observer<any>;
+user$: Observable<firebase.User>;
 
   constructor(private auth: AngularFireAuth, private as: AuthorService) {
-    this.auth.onAuthStateChanged((user: any) =>  {
-      if (user) {
-        this.$user = user;
-      } else {
-        this.$user = null;
-      }
-    })
-
+    this.user$ = this.auth.authState;
   }
 
 
   getCurrentUser() {
-    return this.$user;
+    return this.user$;
   }
 
 async signUp(email, password, newAuthor) {
     let result = await this.auth.createUserWithEmailAndPassword(email, password)
         .then((user: any) => {
-          console.log(user.user.uid);
           const userUid = user.user.uid;
           const author: Author = {
             email: email,
@@ -64,6 +56,10 @@ async signIn(email, password) {
       });
 
     return result;
+  }
+
+  signOut() {
+    this.auth.signOut();
   }
 
 

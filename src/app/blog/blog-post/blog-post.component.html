@@ -4,17 +4,16 @@
   </div>
   <div class="card">
     <div class="authorImageContainer">
-      <div class="authorImage" [style.background-image]="'url('+author.profileImageUrl+')'" routerLink="/author" [queryParams]="{id: blog.authorId}"></div>
+      <!-- <div class="authorImage" [style.background-image]="'url('+author.profileImageUrl+')'" routerLink="/author" [queryParams]="{id: blog.authorId}"></div> -->
     </div>
-    <div class="authorInfo">
+    <div class="authorInfo" *ngIf="author">
        by <span>{{author.fullName}}</span> a student at <span>{{author.company}}</span>
     </div>
-    <div class="blogContent container">
+    <div class="blogContent container" *ngIf="blog">
       <div class="title">
         {{blog.title}}
       </div>
-      <div class="text">
-        {{blog.content}}
+      <div class="text" [froalaView]="blog.content">
       </div>
       <blockquote>
         {{blog.summary}}
