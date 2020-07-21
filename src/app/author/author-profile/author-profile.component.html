@@ -15,7 +15,7 @@
         <div class="authorStatus">
           <div class="statusBox">
             <div class="">Posts</div>
-            <div class="">{{(blogs$ | async)?.length}}</div>
+            <div class="">{{blogs.length}}</div>
           </div>
           <div class="statusBox">
             <div class="">Follower</div>
@@ -24,7 +24,7 @@
         </div>
 
         <div class="authorInfo">
-          <div class="subTitle center">{{author.fullName}}</div>
+          <div class="bigLabel center">{{author.fullName}}</div>
           <div class="subText">{{author.authorAbout}}</div>
         </div>
 
@@ -35,11 +35,11 @@
           My Blogs
         </div>
 
-        <div class="card horizontal" *ngFor="let blog of blogs$ | async; let i = index;">
+        <div class="card blogCards" *ngFor="let blog of blogs; let i = index;">
           <div class="cardImg" [style.background-image]="'url('+blog.imageUrl+')'"></div>
           <div class="card-stacked">
             <div class="card-content">
-              <div class="date">{{blog.date | date}}</div>
+              <div class="date">{{blog.date.toDate() | date}}</div>
               <div class="heading">{{blog.title}}</div>
               <div class="description">{{blog.description}}</div>
             </div>

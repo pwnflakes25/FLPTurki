@@ -4,8 +4,8 @@
     <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
     <ul class="right hide-on-med-and-down">
       <li><a routerLink="/">Home</a></li>
-      <li *ngIf="(authService.user$ | async) === null"><a routerLink="/auth">Sign Up</a></li>
-      <li *ngIf="(authService.user$ | async) === null"><a>Sign In</a></li>
+      <li *ngIf="(authService.user$ | async) === null"><a routerLink="/auth/signup">Sign Up</a></li>
+      <li *ngIf="(authService.user$ | async) === null"><a routerLink="/auth/signin">Sign In</a></li>
       <li *ngIf="authService.user$ | async"  (click)="onSignOut()"><a>Sign Out</a></li>
       <li *ngIf="authService.user$ | async" (click)="goToProfile()"><a>Profile</a></li>
     </ul>

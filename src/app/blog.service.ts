@@ -48,10 +48,12 @@ export class BlogService {
     return this.$blog;
   }
 
-  getBlogsByAuthorId(authorId: string) {
-    //below is to find blogs belonging to specific user
-   this.$authorId.next(authorId);
-   return this.$authorBlogs;
+  triggerAuthorIdQuery(authorId: string) {
+     this.$authorId.next(authorId);
+  }
+
+  getBlogsByAuthorId() {
+    return this.$authorBlogs;
   }
 
   addBlog(blog: Blog) {

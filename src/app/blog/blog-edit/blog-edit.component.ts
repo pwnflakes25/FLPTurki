@@ -16,6 +16,7 @@ declare const M;
 export class BlogEditComponent implements OnInit, AfterViewInit {
 blog$: Observable<Blog>;
 currentBlogId: string;
+defaultImgUrl: string = "https://atlantictravelsusa.com/wp-content/uploads/2016/04/dummy-post-horisontal-thegem-blog-default.jpg";
 private currentUser;
 blogForm = new FormGroup({
     title: new FormControl(''),
@@ -89,6 +90,11 @@ selectedValues: any;
   }
 
   async onPublishBlog() {
+    if (this.blogForm.value.imageUrl === "") {
+      this.blogForm.patchValue({
+        imageUrl: this.defaultImgUrl
+      })
+    }
     this.blogForm.patchValue({
       authorId: this.currentUser.uid,
       date: new Date(),

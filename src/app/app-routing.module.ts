@@ -25,7 +25,7 @@ const routes: Routes = [
     component: BlogEditComponent
   },
   {
-    path: 'auth',
+    path: 'auth/:intent',
     component: AuthComponent
   }
 ];

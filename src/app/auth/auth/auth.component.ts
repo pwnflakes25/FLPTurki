@@ -30,9 +30,20 @@ loginForm: FormGroup;
 signupForm: FormGroup;
 profileForm: FormGroup;
 
-  constructor(private authService: AuthService, private router: Router) { }
+  constructor(private authService: AuthService, private router: Router, private route: ActivatedRoute) { }
 
   ngOnInit(): void {
+
+    this.route.params.subscribe(params => {
+    let intent = params['intent'];
+    if(intent === 'signin') {
+      this.isNewUser = false;
+    } else {
+      this.isNewUser = true;
+    }
+
+   });
+
     this.loginForm = new FormGroup({
       email: new FormControl(''),
       password: new FormControl('')
@@ -62,7 +73,7 @@ profileForm: FormGroup;
   async onSignUp() {
     let newAuthor = {
       fullName: this.profileForm.value.fullName,
-      profileImageUrl: "",
+      profileImageUrl: "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png",
       authorAbout: this.profileForm.value.authorAbout,
       company: this.profileForm.value.company
     }

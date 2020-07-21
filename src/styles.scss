@@ -4,6 +4,7 @@ body {
   --primary-color: #98AEB6; //blue
   --secondary-color: #D9C2BA; //dark beige
   --tertiary-color: #FCEED1; //light beige
+  --background-gradient: linear-gradient(150.65deg, #FCEED1 0%, rgba(217, 194, 186, 0.98) 52.11%, rgba(152, 174, 182, 0.98) 100%);
 
   div:focus, i:focus {
    outline: none;
