@@ -17,13 +17,21 @@
 
 
 .card-panel {
-
   width: 15rem;
   height: 15rem;
   border-radius: 35px;
-  background: transparent;
+  background-image: url('/assets/blue.jpg');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
   box-shadow:  20px 20px 60px #d6cab2,
              -20px -20px 60px #fffff0;
+
+  .panel-header {
+    margin-top: 70%;
+    color: white;
+    font-size: 20px;
+  }
 }
 
 .card {
