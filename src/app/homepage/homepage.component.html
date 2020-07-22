@@ -17,8 +17,22 @@
   </section>
   <section>
     <div class="bigLabel">Recent Blogs</div>
-    <div class="blogListContainer">
 
+   <div class="spinnerContainer" *ngIf='(blogs | async) === null'>
+     <div  class="preloader-wrapper big active">
+       <div class="spinner-layer">
+         <div class="circle-clipper left">
+           <div class="circle"></div>
+         </div><div class="gap-patch">
+           <div class="circle"></div>
+         </div><div class="circle-clipper right">
+           <div class="circle"></div>
+         </div>
+       </div>
+     </div>
+   </div>
+
+    <div class="blogListContainer">
       <div class="card horizontal" *ngFor="let blog of blogs | async; let i = index">
         <div class="cardImg" [style.background-image]="'url('+blog.imageUrl+')'"></div>
         <div class="card-stacked">
@@ -26,6 +40,8 @@
             <div class="date">{{blog.date.toDate() | date}}</div>
             <div class="heading">{{blog.title}}</div>
             <div class="description">{{blog.description}}</div>
+          </div>
+          <div class="buttonWrapper">
             <a class="primaryButton waves-effect" [routerLink]="['/blog']" [queryParams]="{id: blog.id}">Read More</a>
           </div>
         </div>

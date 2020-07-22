@@ -10,12 +10,19 @@ section {
    }
 
   .blogImage {
-    background: url("https://atlantictravelsusa.com/wp-content/uploads/2016/04/dummy-post-horisontal-thegem-blog-default.jpg");
+    display: flex;
+    justify-content: center;
+    align-items: center;
     background-position: center;
     background-repeat: none;
     background-size: cover;
     width: 100%;
-    height: 20rem;
+    height: 24rem;
+    cursor: pointer;
+
+    i {
+      color: white;
+    }
   }
 
   .mainCard {

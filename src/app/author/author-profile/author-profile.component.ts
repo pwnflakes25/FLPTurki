@@ -6,7 +6,7 @@ import { Blog } from "../../blog/blog.model";
 import { Author } from "../author.model";
 import { ActivatedRoute } from '@angular/router';
 import {Observable, Subscription} from 'rxjs';
-import { filter } from 'rxjs/operators';
+import { filter, finalize } from 'rxjs/operators';
 
 @Component({
   selector: 'app-author-profile',
@@ -19,6 +19,7 @@ blogs: Blog[];
 author$: Observable<Author>;
 currentUserId: string;
 userSub: Subscription;
+isLoading = true;
 defaultProfilePic = "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png"
 
   constructor(private bs: BlogService, private as: AuthorService, private route: ActivatedRoute, private authService: AuthService) { }
@@ -26,8 +27,9 @@ defaultProfilePic = "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profil
   ngOnInit(): void {
     this.route.queryParams.subscribe(params => {
     let id = params['id'];
-    this.bs.getBlogsByAuthorId().subscribe(res => {
+    this.bs.getBlogsByAuthorId().subscribe((res) => {
       this.blogs = res;
+      this.isLoading = false;
     });
     this.author$ = this.as.getAuthorById(id);
     this.bs.triggerAuthorIdQuery(id);

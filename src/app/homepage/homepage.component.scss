@@ -4,10 +4,15 @@
     padding-right: 4rem;
   }
 
+  .spinnerContainer {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+  }
+
   .blogListContainer {
       display: flex;
       flex-wrap: wrap;
-      justify-content: flex-start;
   }
 
 
@@ -24,10 +29,8 @@
 .card {
   width: 26rem;
   margin-right: 1rem;
-  height: 15rem;
   border-radius: 35px;
   display: flex;
-  justify-content: center;
   align-items: center;
   background: #D9C2BA;
   box-shadow:  20px 20px 60px #b8a59e,
@@ -42,10 +45,17 @@
     background-size: cover;
   }
 
-  .card-content {
+  .card-stacked {
     display: flex;
     flex-direction: column;
+    justify-content: space-between;
+    max-height: 100%;
+  }
+
+  .card-content {
     max-width: 20rem;
+    height: 10rem;
+    overflow-y: hidden;
   }
 
   .heading {
@@ -59,5 +69,11 @@
 
   .description {
     color: #9C8481;
+  }
+
+  .buttonWrapper {
+    display: flex;
+    justify-content: center;
+    padding-bottom: 1rem;
   }
 }

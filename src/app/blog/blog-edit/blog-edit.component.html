@@ -1,7 +1,12 @@
 <section>
-  <div class="blogImage">
-    <div class="backArrow"><i class="medium material-icons" [routerLink]="['../']">arrow_back</i></div>
+  <div class="backArrow"><i class="medium material-icons" [routerLink]="['../']">chevron_left</i></div>
+  <div class="blogImage" [style.background-image]="'url('+imageDisplayUrl+')'" (click)="filePicker.click()">
+    <div class="center">
+      <i class="large material-icons">file_upload</i>
+      <div style="color: white; font-size: 18px;">Click here to upload An image for your blog</div>
+    </div>
   </div>
+  <input type="file" #filePicker style="display: none;" (change)="onFileSelected($event)" name="image" />
   <div class="card mainCard">
 
     <div [ngSwitch]="edit" class="header">

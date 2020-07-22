@@ -16,6 +16,7 @@ declare const M;
 export class BlogEditComponent implements OnInit, AfterViewInit {
 blog$: Observable<Blog>;
 currentBlogId: string;
+imageDisplayUrl: string | ArrayBuffer;
 defaultImgUrl: string = "https://atlantictravelsusa.com/wp-content/uploads/2016/04/dummy-post-horisontal-thegem-blog-default.jpg";
 private currentUser;
 blogForm = new FormGroup({
@@ -150,6 +151,19 @@ selectedValues: any;
     } catch (error) {
       alert(error);
     }
+  }
+
+
+  onFileSelected(event: Event) {
+    //this shit below helps display image uploaded
+    const file = (event.target as HTMLInputElement).files[0];
+    const reader = new FileReader();
+    reader.onload = () => {
+      this.imageDisplayUrl = reader.result;
+      this.blogForm.patchValue({imageUrl: reader.result});
+      this.blogForm.get('imageUrl').updateValueAndValidity();
+    };
+    reader.readAsDataURL(file);
   }
 
 }

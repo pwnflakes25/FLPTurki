@@ -24,7 +24,7 @@
         </div>
 
         <div class="authorInfo">
-          <div class="bigLabel center">{{author.fullName}}</div>
+          <div class="subTitle center">{{author.fullName}}</div>
           <div class="subText">{{author.authorAbout}}</div>
         </div>
 
@@ -34,20 +34,38 @@
         My Blogs
       </div>
 
-      <div class="blogListContainer">
-        <div class="card blogCards" *ngFor="let blog of blogs; let i = index;">
-          <div class="cardImg" [style.background-image]="'url('+blog.imageUrl+')'"></div>
-            <div class="date" style="margin-left: 4px;">{{blog.date.toDate() | date}}</div>
-            <div class="card-title">
-              <div class="heading">{{blog.title}}</div>
+      <div [ngSwitch]="isLoading" class="contentWrapper">
+
+          <div *ngSwitchCase="true" class="preloader-wrapper big active">
+            <div class="spinner-layer">
+              <div class="circle-clipper left">
+                <div class="circle"></div>
+              </div><div class="gap-patch">
+                <div class="circle"></div>
+              </div><div class="circle-clipper right">
+                <div class="circle"></div>
+              </div>
             </div>
-            <div class="card-content">
-              <div class="description">{{blog.description}}</div>
+          </div>
+
+
+            <div class="blogListContainer" *ngSwitchCase="false">
+              <div class="card blogCards" *ngFor="let blog of blogs; let i = index;">
+                <div class="cardImg" [style.background-image]="'url('+blog.imageUrl+')'"></div>
+                  <div class="date" style="margin-left: 4px;">{{blog.date.toDate() | date}}</div>
+                  <div class="card-title">
+                    <div class="heading">{{blog.title}}</div>
+                  </div>
+                  <div class="card-content">
+                    <div class="description">{{blog.description}}</div>
+                  </div>
+                  <div class="buttonWrapper">
+                    <a class="tinyButtons" *ngIf="currentUserId && currentUserId === blog.authorId" [routerLink]="['/create']"  [queryParams]="{edit: 'true', id: blog.id}"><i class="material-icons">create</i></a>
+                  </div>
+              </div>
             </div>
-            <div class="buttonWrapper">
-              <a class="tinyButtons" *ngIf="currentUserId && currentUserId === blog.authorId" [routerLink]="['/create']"  [queryParams]="{edit: 'true', id: blog.id}"><i class="material-icons">create</i></a>
-            </div>
-        </div>
+
+
       </div>
 
     </div>
