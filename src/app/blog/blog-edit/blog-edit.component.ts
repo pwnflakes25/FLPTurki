@@ -46,8 +46,10 @@ selectedValues: any;
     this.route.queryParams.subscribe(params => {
     let id = params['id'];
     let edit = params['edit'];
+    this.currentBlogId = id;
 
       if (edit) {
+       this.edit = true;
        this.fetchBlogAndFillForm(id);
      }
 
@@ -66,8 +68,7 @@ selectedValues: any;
   async fetchBlogAndFillForm(id) {
     this.blog$ = await this.bs.getBlogById(id);
     this.blog$.subscribe((blog:any) => {
-      this.currentBlogId = blog.id;
-      this.setFormValue(blog.data);
+      this.setFormValue(blog);
     })
   }
 
@@ -142,7 +143,13 @@ selectedValues: any;
     this.blogForm.patchValue({
       date: new Date()
     })
-    this.bs.updateBlog(this.currentBlogId, this.blogForm.value);
+    try {
+      this.bs.updateBlog(this.currentBlogId, this.blogForm.value);
+      alert("Success!");
+      this.router.navigate(['/'])
+    } catch (error) {
+      alert(error);
+    }
   }
 
 }

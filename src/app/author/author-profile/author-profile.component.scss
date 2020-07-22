@@ -11,6 +11,13 @@
    align-content: center;
  }
 
+ .blogListContainer {
+   display: flex;
+   flex-wrap: wrap;
+   width: 100%;
+   padding: 2rem;
+ }
+
  .authorInfo {
    align-self: center;
    font-size: 16px;
@@ -33,9 +40,21 @@
  }
 }
 
+
+
 .card .blogCards {
   box-shadow: none;
-  max-width: 20rem;
+  width: 20rem;
+  margin-right: 2rem;
+
+  .card-title {
+    padding: 4px;
+  }
+
+  .card-content {
+    padding: 4px;
+    margin-bottom: 1rem;
+  }
 
   .heading {
     color: #4B3B42;
@@ -55,6 +74,24 @@
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
+  margin-bottom: 1rem;
+ }
+
+ .buttonWrapper {
+   display: flex;
+   justify-content: flex-end;
+   align-items: flex-end;
+ }
+
+ .tinyButtons {
+   border-radius: 8px;
+   background-color: var(--secondary-color);
+   color: white;
+   width: 3rem;
+   height: 2rem;
+   padding: 4px 0px 4px 0px;
+   font-size: 12px;
+   text-align: center;
  }
 }
 
@@ -63,27 +100,4 @@
   display: flex;
   justify-content: space-between;
   width: 60%;
-}
-
-.blogListContainer {
-  display: flex;
-  flex-direction: column;
-  flex-wrap: wrap;
-  padding-top: 4rem;
-  justify-content: center;
-
-  // .card .horizontal {
-  //   display: flex;
-  //   border-radius: 8px;
-  //   background: #ffffff;
-  //   box-shadow:  13px 13px 26px #e0e0e0,
-  //            -13px -13px 26px #ffffff;
-  //
-  //   .heading {
-  //     color: #4B3B42;
-  //     font-size: 20px;
-  //   }
-  //
-  // }
-
 }
