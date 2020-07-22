@@ -3,13 +3,14 @@ section {
   display: flex;
   flex-direction: column;
   padding: 0px;
+  background: var(--background-gradient);
 
    .header {
      margin-bottom: 4rem;
    }
 
   .blogImage {
-    background: url("https://papers.co/wallpaper/papers.co-bb08-minimal-drawing-pink-illustration-art-34-iphone6-plus-wallpaper.jpg");
+    background: url("https://atlantictravelsusa.com/wp-content/uploads/2016/04/dummy-post-horisontal-thegem-blog-default.jpg");
     background-position: center;
     background-repeat: none;
     background-size: cover;
@@ -18,20 +19,19 @@ section {
   }
 
   .mainCard {
-   margin-top: -2rem;
+   margin: -4rem 4rem 4rem 4rem;
    min-height: 100vh;
-   border-radius: 35px 35px 0px 0px;
+   border-radius: 35px 35px 35px 35px;
    display: flex;
    flex-direction: column;
    padding: 4rem;
    padding-bottom: 10rem;
 
-
    .input-field {
      margin-top: 2rem;
    }
 
-   .contentText {
+   .editorStyle {
      font-size: 20px;
      color: var(--secondary-color);
    }
@@ -83,5 +83,15 @@ section {
      align-items: flex-start;
      margin-right: 1rem;
    }
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  section{
+    .mainCard {
+      margin: -2rem 0px 0px 0px;
+      padding: 2rem 1rem 4rem 1rem;
+      border-radius: 35px 35px 0px 0px;
+    }
   }
 }

@@ -2,6 +2,17 @@ nav {
   background: transparent;
   position: absolute;
   box-shadow: none!important;
-  margin-bottom: 4rem;
   padding-right: 4rem;
+
+  .brand-logo {
+    font-size: 18px;
+  }
+}
+
+.sidenav {
+  background: var(--background-gradient);
+
+  li {
+    cursor: pointer;
+  }
 }

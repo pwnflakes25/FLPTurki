@@ -33,10 +33,8 @@ options: Object = {
   placeholderText: 'Write your content',
   charCounterCount: true,
   attribution: false,
-  paragraphStyles: {
-   class1: 'contentText',
-   class2: 'Class 2'
- }
+  htmlAllowedStyleProps: ['font-family', 'font-size', 'background', 'color', 'width', 'text-align', 'vertical-align', 'background-color'],
+  editorClass: 'editorStyle'
 }
 selectInstance: any;
 selectedValues: any;
