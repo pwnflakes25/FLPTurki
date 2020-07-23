@@ -1,7 +1,7 @@
 <nav>
   <div class="nav-wrapper">
-    <a  class="brand-logo center">FLP Turki x Firghi</a>
-    <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+    <a  class="brand-logo left"></a>
+    <a data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
     <ul class="right hide-on-med-and-down">
       <li><a routerLink="/">Home</a></li>
       <li *ngIf="(authService.user$ | async) === null"><a routerLink="/auth/signup">Sign Up</a></li>

@@ -4,9 +4,21 @@ nav {
   box-shadow: none!important;
   padding-right: 4rem;
 
+
   .brand-logo {
     font-size: 18px;
+    margin-left: 4rem;
   }
+}
+
+.brand-logo {
+  background-image: url('/assets/flp_logo.png');
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  margin-top: 1rem;
+  width: 5rem;
+  height: 6rem;
 }
 
 .sidenav {
