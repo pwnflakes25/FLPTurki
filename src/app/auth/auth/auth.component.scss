@@ -82,8 +82,14 @@
     .carouselContainer {
       width: 100%;
       align-items: center;
-      justify-content: center;
+      justify-content: flex-start;
       height: 46rem;
+      margin-top: 1rem;
+    }
+
+    .textContainer {
+      margin-top: 2rem;
+      padding-left: 1rem;
     }
 
    .card {

@@ -7,6 +7,7 @@
   .blogListContainer {
       display: flex;
       flex-wrap: wrap;
+      padding-left: 1rem;
   }
 
   .featuredBlogListContainer {
@@ -60,8 +61,8 @@
   }
 
   .card-content {
-    max-width: 20rem;
-    height: 10rem;
+    max-width: 22rem;
+    height: 12rem;
     overflow-y: hidden;
   }
 
@@ -93,9 +94,6 @@
 }
 
 @media only screen and (max-width: 600px) {
-  .blogListContainer:nth-child(2) {
-    justify-content: center;
-  }
   section {
     padding-left: 1rem;
     padding-right: 1rem;

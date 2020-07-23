@@ -34,7 +34,7 @@ section {
    border-radius: 35px 35px 0px 0px;
    display: flex;
    flex-direction: column;
-   padding: 4rem;
+   padding: 2rem;
   }
 
   .blogContent {
@@ -50,5 +50,13 @@ section {
     font-size: 20px;
     color: #9C8481;
     border-left-color: #9C8481;
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  section {
+    .card {
+      padding: 1rem;
+    }
   }
 }
