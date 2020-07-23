@@ -87,7 +87,7 @@
 
   .material-icons {
     vertical-align: middle;
-    margin-right: 1rem;
+    margin-left: 1rem;
     margin-top: 8px;
     cursor: pointer
   }
@@ -97,5 +97,28 @@
   section {
     padding-left: 1rem;
     padding-right: 1rem;
+  }
+  .material-icons {
+   margin: 0px 4px 0px 0px;
+   font-size: 40px;
+  }
+  .likeIconContainer {
+    margin-top: -6rem;
+    position: absolute;
+    right: -1.6rem;
+  }
+  .buttonWrapper {
+    display: flex;
+    justify-content: center;
+    padding-bottom: 0px;
+    position: relative;
+  }
+  .primaryButton {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0px 4px 0px 8px;
+  	font-size: 16px;
+    padding: 0px;
   }
 }

@@ -3,12 +3,33 @@
  border-radius: 35px 35px 0px 0px;
  display: flex;
  flex-direction: column;
- padding: 4rem;
+ padding: 1rem;
+ min-height: 100vh;
+
+ .authorStatus {
+   font-size: 18px;
+   color: var(--secondary-color);
+   text-align: center;
+   align-self: center;
+   display: flex;
+   justify-content: center;
+   width: 60%;
+ }
 
  .authorDetails {
    display: flex;
    flex-direction: column;
    align-content: center;
+ }
+
+ .header {
+   font-size: 28px;
+   color: var(--primary-color);
+   margin-bottom: 1rem;
+ }
+
+ .subTitle {
+   font-size: 24px;
  }
 
  .contentWrapper {
@@ -22,8 +43,10 @@
  .blogListContainer {
    display: flex;
    flex-wrap: wrap;
+   justify-content: center;
+   align-items: center;
    width: 100%;
-   padding: 2rem;
+   padding: 1rem;
  }
 
  .authorInfo {
@@ -78,6 +101,7 @@
   }
 
   .cardImg {
+  border-radius: 8px 8px 0px 0px;
   height: 10rem;
   background-repeat: no-repeat;
   background-position: center;
@@ -107,9 +131,23 @@
  }
 }
 
-.authorStatus {
-  align-self: center;
-  display: flex;
-  justify-content: space-between;
-  width: 60%;
+@media only screen and (max-width: 600px) {
+   .mainCard {
+     padding: 0px;
+
+     .blogListContainer {
+       padding: 0px;
+     }
+   }
+
+   .card .blogCards {
+    width: 100%;
+    align-self: center;
+    margin: 2rem 0px 0px 0px;
+
+    .cardImg {
+      height: 15rem;
+    }
+  }
+
 }

@@ -45,11 +45,11 @@
             <div class="description">{{blog.description}}</div>
           </div>
           <div class="buttonWrapper">
-            <div *ngIf="currentUserId">
+            <a class="primaryButton waves-effect" [routerLink]="['/blog']" [queryParams]="{id: blog.id}">Read More</a>
+            <div *ngIf="currentUserId" class="likeIconContainer">
                <i class="small material-icons" *ngIf="checkIfCurrentUserLiked(blog)"  (click)="minusLikes(blog)" >favorite</i>
                <i class="small material-icons"  *ngIf="!checkIfCurrentUserLiked(blog)" (click)="addLikes(blog)">favorite_border</i>
             </div>
-            <a class="primaryButton waves-effect" [routerLink]="['/blog']" [queryParams]="{id: blog.id}">Read More</a>
           </div>
         </div>
       </div>

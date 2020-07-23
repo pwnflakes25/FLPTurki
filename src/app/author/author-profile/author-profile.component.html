@@ -1,7 +1,7 @@
 <div class="mainContainer">
 
   <div class="authorBannerImage">
-    <div class="backArrow"><i class="medium material-icons" [routerLink]="['../']">arrow_back</i></div>
+    <div class="backArrow"><i class="medium material-icons" [routerLink]="['../']">chevron_left</i></div>
   </div>
 
     <div class="card mainCard">
@@ -12,26 +12,20 @@
           <div class="authorImage" [style.background-image]="'url('+author.profileImageUrl+')'"></div>
         </div>
 
+
+        <div class="authorInfo">
+          <div class="header center">{{author.fullName}}</div>
+          <div class="subText">{{author.authorAbout}}</div>
+        </div>
+
         <div class="authorStatus">
           <div class="statusBox">
             <div class="">Posts</div>
             <div class="">{{blogs.length}}</div>
           </div>
-          <div class="statusBox">
-            <div class="">Follower</div>
-            <div class="">20</div>
-          </div>
         </div>
 
-        <div class="authorInfo">
-          <div class="subTitle center">{{author.fullName}}</div>
-          <div class="subText">{{author.authorAbout}}</div>
-        </div>
 
-      </div>
-
-      <div class="subTitle">
-        My Blogs
       </div>
 
       <div [ngSwitch]="isLoading" class="contentWrapper">
@@ -50,6 +44,7 @@
 
 
             <div class="blogListContainer" *ngSwitchCase="false">
+
               <div class="card blogCards" *ngFor="let blog of blogs; let i = index;">
                 <div class="cardImg" [style.background-image]="'url('+blog.imageUrl+')'"></div>
                   <div class="date" style="margin-left: 4px;">{{blog.date.toDate() | date}}</div>
