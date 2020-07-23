@@ -1,4 +1,4 @@
-import { Component, OnInit, AfterViewInit, OnDestroy } from '@angular/core';
+import { Component, OnInit, AfterViewInit, OnDestroy, HostListener } from '@angular/core';
 import {Blog} from '../blog/blog.model';
 import { BlogService } from "../blog.service";
 import {Observable, Subscription} from 'rxjs';
@@ -30,6 +30,18 @@ blogSub: Subscription;
   ngAfterViewInit(): void {
     let elems = document.querySelectorAll('.fixed-action-btn');
     let instances = M.FloatingActionButton.init(elems);
+
+    //below make FAB background to blue on scroll and make it transparent again after done
+    var timer = null;
+      window.addEventListener('scroll', () => {
+          if(timer !== null) {
+            document.getElementById('fab').classList.add('secondary-background');
+            clearTimeout(timer);
+          }
+          timer = setTimeout(() => {
+            document.getElementById('fab').classList.remove('secondary-background');
+          }, 1000);
+      }, false);
   }
 
   addLikes(blog: any) {

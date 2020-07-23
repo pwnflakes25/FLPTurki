@@ -1,5 +1,6 @@
 .mainCard {
  margin-top: -2rem;
+ margin-bottom: 0rem;
  border-radius: 35px 35px 0px 0px;
  display: flex;
  flex-direction: column;
@@ -8,7 +9,6 @@
 
  .authorStatus {
    font-size: 18px;
-   color: var(--secondary-color);
    text-align: center;
    align-self: center;
    display: flex;
@@ -16,15 +16,21 @@
    width: 60%;
  }
 
+ .label {
+   color: var(--secondary-color);
+   font-size: 16px;
+ }
+
+
  .authorDetails {
    display: flex;
    flex-direction: column;
    align-content: center;
+   margin-bottom: 1rem;
  }
 
  .header {
    font-size: 28px;
-   color: var(--primary-color);
    margin-bottom: 1rem;
  }
 
@@ -52,8 +58,7 @@
  .authorInfo {
    align-self: center;
    font-size: 16px;
-   margin: 2rem;
-   color: #D9C2BA;
+   margin: 1rem;
    border-bottom-style: solid;
    border-bottom-color: #D9C2BA;
    border-bottom-width: 4px;
@@ -74,17 +79,18 @@
 
 
 .card .blogCards {
-  box-shadow: none;
   width: 20rem;
   margin-right: 2rem;
+  border-radius: 8px;
 
-  .card-title {
-    padding: 4px;
-  }
+   .card-bottom-half {
+     padding-left: 1rem;
+     margin-bottom: 1rem;
+   }
 
   .card-content {
-    padding: 4px;
-    margin-bottom: 1rem;
+   margin: 0px;
+   padding: 0px;
   }
 
   .heading {
@@ -113,22 +119,13 @@
    display: flex;
    justify-content: flex-end;
    align-items: flex-end;
+   padding: 0px 1rem 1rem 0px;
  }
 
- .tinyButtons {
-   border-radius: 8px;
-   background-color: var(--secondary-color);
-   color: white;
-   width: 3rem;
-   height: 2rem;
-   padding: 4px 0px 4px 0px;
-   font-size: 12px;
-   text-align: center;
-
-   &:hover {
-     filter: brightness(1.05);
-   }
+ .material-icons {
+   cursor: pointer;
  }
+
 }
 
 @media only screen and (max-width: 600px) {

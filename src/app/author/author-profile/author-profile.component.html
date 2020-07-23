@@ -8,19 +8,19 @@
 
       <div class="authorDetails" *ngIf="(author$ | async) as author">
 
-        <div class="authorImageContainer">
+        <div class="authorImageContainer z-depth-2">
           <div class="authorImage" [style.background-image]="'url('+author.profileImageUrl+')'"></div>
         </div>
 
 
         <div class="authorInfo">
           <div class="header center">{{author.fullName}}</div>
-          <div class="subText">{{author.authorAbout}}</div>
+          <div class="center">{{author.authorAbout}}</div>
         </div>
 
         <div class="authorStatus">
           <div class="statusBox">
-            <div class="">Posts</div>
+            <div class="label">Posts</div>
             <div class="">{{blogs.length}}</div>
           </div>
         </div>
@@ -45,17 +45,19 @@
 
             <div class="blogListContainer" *ngSwitchCase="false">
 
-              <div class="card blogCards" *ngFor="let blog of blogs; let i = index;">
+              <div class="card blogCards z-depth-2" *ngFor="let blog of blogs; let i = index;">
                 <div class="cardImg" [style.background-image]="'url('+blog.imageUrl+')'"></div>
-                  <div class="date" style="margin-left: 4px;">{{blog.date.toDate() | date}}</div>
-                  <div class="card-title">
-                    <div class="heading">{{blog.title}}</div>
-                  </div>
-                  <div class="card-content">
-                    <div class="description">{{blog.description}}</div>
+                  <div class="card-bottom-half">
+                    <div class="date" style="margin-left: 4px;">{{blog.date.toDate() | date}}</div>
+                    <div class="card-title">
+                      <div class="heading">{{blog.title}}</div>
+                    </div>
+                    <div class="card-content">
+                      <div class="description">{{blog.description}}</div>
+                    </div>
                   </div>
                   <div class="buttonWrapper">
-                    <a class="tinyButtons" *ngIf="currentUserId && currentUserId === blog.authorId" [routerLink]="['/create']"  [queryParams]="{edit: 'true', id: blog.id}"><i class="material-icons">create</i></a>
+                    <i class="material-icons" *ngIf="currentUserId && currentUserId === blog.authorId" [routerLink]="['/create']"  [queryParams]="{edit: 'true', id: blog.id}">create</i>
                   </div>
               </div>
             </div>

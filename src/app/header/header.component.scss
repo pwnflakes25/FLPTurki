@@ -24,6 +24,8 @@ nav {
   background: var(--background-gradient);
 
   li {
-    cursor: pointer;
+    a, i {
+      cursor: pointer;
+    }
   }
 }

@@ -7,7 +7,7 @@
       <li *ngIf="(authService.user$ | async) === null"><a routerLink="/auth/signup">Sign Up</a></li>
       <li *ngIf="(authService.user$ | async) === null"><a routerLink="/auth/signin">Sign In</a></li>
       <li *ngIf="authService.user$ | async"  (click)="onSignOut()"><a>Sign Out</a></li>
-      <li *ngIf="authService.user$ | async" (click)="goToProfile()"><a>Profile</a></li>
+      <li *ngIf="authService.user$ | async" (click)="goToProfile()"><a><i class="material-icons right" style="cursor: pointer">account_circle</i>Profile</a></li>
     </ul>
   </div>
 </nav>
