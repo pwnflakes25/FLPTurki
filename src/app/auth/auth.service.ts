@@ -29,7 +29,8 @@ async signUp(email, password, newAuthor) {
             fullName: newAuthor.fullName,
             profileImageUrl: newAuthor.profileImageUrl,
             authorAbout: newAuthor.authorAbout,
-            company: newAuthor.company
+            company: newAuthor.company,
+            likedBlogsId: ['']
           }
           this.as.createAuthor(userUid, author);
           return [true, "Signed Up Successfully"];

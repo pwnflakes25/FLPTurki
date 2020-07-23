@@ -4,12 +4,6 @@
     padding-right: 4rem;
   }
 
-  .spinnerContainer {
-    width: 100%;
-    display: flex;
-    justify-content: center;
-  }
-
   .blogListContainer {
       display: flex;
       flex-wrap: wrap;
@@ -83,6 +77,13 @@
     display: flex;
     justify-content: center;
     padding-bottom: 1rem;
+  }
+
+  .material-icons {
+    vertical-align: middle;
+    margin-right: 1rem;
+    margin-top: 8px;
+    cursor: pointer
   }
 }
 

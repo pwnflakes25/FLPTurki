@@ -1,0 +1,20 @@
+export const genres = [
+  'Novel',
+  'Antologi cerpen',
+  'Antologi Puisi',
+  'Motivasi',
+  'Pengembangan Diri',
+  'Religi',
+  'Kesehatan',
+  'Pendidikan',
+  'Seni',
+  'Sosial',
+  'Budaya',
+  'Sejarah',
+  'Ekonomi',
+  'Sains',
+  'Teknologi',
+  'Kuliner',
+  'Travelling',
+  'Lainnya'
+]

@@ -4,4 +4,5 @@ export interface Author {
   profileImageUrl: string;
   authorAbout: string;
   company: string;
+  likedBlogsId: string[];
 }

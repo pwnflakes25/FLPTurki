@@ -11,6 +11,8 @@ export interface Blog {
      isPublished: boolean;
      views: number;
      likes: number;
+     genres: string[];
+     references: string[];
 
     // constructor(title: string, content: string, summary: string, description: string, imageUrl: string, tags: string[], date: Date) {
     //   this.title = title;

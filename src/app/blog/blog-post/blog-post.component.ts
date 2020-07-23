@@ -15,9 +15,9 @@ import {map, concatMap} from 'rxjs/operators';
 })
 export class BlogPostComponent implements OnInit {
 blog: Blog;
+isLoading: boolean = true;
 currentBlogId: string;
 author: Author;
-result;
 
 
   constructor(private route: ActivatedRoute, private bs: BlogService, private as: AuthorService) { }
@@ -27,7 +27,7 @@ result;
     let id = params['id'];
     this.bs.getBlogById(id).subscribe(blog => {
       this.blog = blog;
-      console.log(this.blog);
+      this.isLoading = false;
       this.as.getAuthorById(blog.authorId).subscribe(author => {
         this.author = author;
         console.log(this.author);

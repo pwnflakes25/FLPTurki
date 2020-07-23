@@ -1,8 +1,23 @@
 <section>
-  <div class="blogImage">
+  <div class="blogImage" [style.background-image]="'url('+blog.imageUrl+')'">
     <div class="backArrow"><i class="medium material-icons" [routerLink]="['../']">chevron_left</i></div>
   </div>
   <div class="card">
+
+    <div class="spinnerContainer" *ngIf='isLoading'>
+      <div  class="preloader-wrapper big active">
+        <div class="spinner-layer">
+          <div class="circle-clipper left">
+            <div class="circle"></div>
+          </div><div class="gap-patch">
+            <div class="circle"></div>
+          </div><div class="circle-clipper right">
+            <div class="circle"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
     <div class="authorImageContainer">
       <div class="authorImage" [style.background-image]="'url('+author.profileImageUrl+')'" routerLink="/author" [queryParams]="{id: blog.authorId}"></div>
     </div>
@@ -18,6 +33,10 @@
       <blockquote>
         {{blog.summary}}
       </blockquote>
+      <div class="references" *ngIf="blog.references" style="margin-top: 4rem;">
+         <div class="">References:</div>
+         <p *ngFor='let reference of blog.references; let i = index;'>{{reference}}</p>
+      </div>
     </div>
   </div>
 </section>

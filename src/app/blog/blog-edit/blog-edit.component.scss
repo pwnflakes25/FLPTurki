@@ -23,6 +23,14 @@ section {
     i {
       color: white;
     }
+
+    .imageUploadBox {
+      padding: 2rem;
+      border-radius: 10px;
+      background: #EEDDC8;
+      box-shadow: inset 15px 15px 30px #dbcbb8,
+            inset -15px -15px 30px #ffefd8;
+    }
   }
 
   .mainCard {
@@ -36,12 +44,25 @@ section {
 
    .input-field {
      margin-top: 2rem;
+
+    &:focus-within {
+      i {
+        color: var(--secondary-color);
+      }
+    }
    }
 
    .editorStyle {
      font-size: 20px;
      color: var(--secondary-color);
    }
+
+   .select-wrapper {
+      input:focus {
+       border-bottom-color: var(--tertiary-color) !important;
+     }
+   }
+
 
 
    input, textarea {
@@ -73,6 +94,25 @@ section {
       color: var(--secondary-color);
       box-shadow: none;
     }
+   }
+
+   .referencesDisplay {
+     .material-icons {
+       vertical-align: middle;
+       margin: 1rem;
+       color: red;
+       cursor: pointer;
+     }
+   }
+
+   #addReferenceButton {
+     cursor: pointer;
+     text-align: center;
+
+     &:hover {
+       filter: brightness(1.1);
+       background-color: var(--tertiary-color);
+     }
    }
 
 

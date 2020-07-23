@@ -6,6 +6,7 @@ import {AuthService} from '../../auth/auth.service';
 import {Blog} from '../blog.model';
 import {Observable, Subscription} from 'rxjs';
 import {map} from 'rxjs/operators';
+import {genres} from './genres';
 declare const M;
 
 @Component({
@@ -16,7 +17,8 @@ declare const M;
 export class BlogEditComponent implements OnInit, AfterViewInit {
 blog$: Observable<Blog>;
 currentBlogId: string;
-imageDisplayUrl: string | ArrayBuffer;
+referencesList: string[] = [];
+imageDisplayUrl: string | ArrayBuffer = '';
 defaultImgUrl: string = "https://atlantictravelsusa.com/wp-content/uploads/2016/04/dummy-post-horisontal-thegem-blog-default.jpg";
 private currentUser;
 blogForm = new FormGroup({
@@ -25,13 +27,17 @@ blogForm = new FormGroup({
     content: new FormControl(''),
     summary: new FormControl(''),
     imageUrl: new FormControl(''),
+    isPublished: new FormControl(''),
     authorId: new FormControl(''),
     date: new FormControl(''),
-    tags: new FormControl('')
+    tags: new FormControl(''),
+    likes: new FormControl(''),
+    genres: new FormControl(''),
+    references: new FormControl('')
 });
 edit: boolean = false;
 options: Object = {
-  placeholderText: 'Write your content',
+  placeholderText: 'Write your content here...',
   charCounterCount: true,
   attribution: false,
   htmlAllowedStyleProps: ['font-family', 'font-size', 'background', 'color', 'width', 'text-align', 'vertical-align', 'background-color'],
@@ -39,6 +45,7 @@ options: Object = {
 }
 selectInstance: any;
 selectedValues: any;
+genres = genres;
 
 
   constructor(private bs: BlogService, private route: ActivatedRoute, private authService: AuthService, private router: Router) { }
@@ -74,7 +81,9 @@ selectedValues: any;
   }
 
  //set form value if the blog is exisiting and it is editing
-  async setFormValue(blog: Blog) {
+  setFormValue(blog: Blog) {
+    this.referencesList = [...blog.references];
+    this.imageDisplayUrl = blog.imageUrl;
     this.blogForm.setValue({
       title: blog.title,
       description: blog.description,
@@ -85,9 +94,23 @@ selectedValues: any;
       date: blog.date,
       tags: blog.tags,
       isPublished: blog.isPublished,
-      likes: blog.likes
+      likes: blog.likes,
+      genres: blog.genres,
+      references: blog.references
     })
   }
+
+  addReference(value: string) {
+    console.log(value);
+    this.referencesList.push(value);
+    const elem = (<HTMLInputElement>document.getElementById('referenceInput'));
+    elem.value = "";
+  }
+
+  removeReference(i: number) {
+    this.referencesList.splice(i,1);
+  }
+
 
   async onPublishBlog() {
     if (this.blogForm.value.imageUrl === "") {
@@ -100,9 +123,9 @@ selectedValues: any;
       date: new Date(),
       isPublished: true,
       likes: 0,
-      tags: this.blogForm.value.tags
+      tags: this.blogForm.value.tags,
+      references: [...this.referencesList]
     })
-    console.log()
     try {
       this.bs.addBlog(this.blogForm.value);
       alert("Success!");
@@ -123,7 +146,8 @@ selectedValues: any;
       this.blogForm.patchValue({
         authorId: this.currentUser.uid,
         date: new Date(),
-        isPublished: false
+        isPublished: false,
+        references: this.referencesList
       })
      this.bs.updateBlog(this.currentBlogId, this.blogForm.value);
     }
@@ -134,7 +158,8 @@ selectedValues: any;
         date: new Date(),
         isPublished: false,
         likes: 0,
-        tags: this.blogForm.value.tags
+        tags: this.blogForm.value.tags,
+        references: this.referencesList.slice()
       })
      this.bs.addBlog(this.blogForm.value);
     }
@@ -142,7 +167,8 @@ selectedValues: any;
 
   onUpdateBlog() {
     this.blogForm.patchValue({
-      date: new Date()
+      date: new Date(),
+      references: [...this.referencesList]
     })
     try {
       this.bs.updateBlog(this.currentBlogId, this.blogForm.value);
@@ -154,16 +180,55 @@ selectedValues: any;
   }
 
 
-  onFileSelected(event: Event) {
-    //this shit below helps display image uploaded
-    const file = (event.target as HTMLInputElement).files[0];
-    const reader = new FileReader();
-    reader.onload = () => {
-      this.imageDisplayUrl = reader.result;
-      this.blogForm.patchValue({imageUrl: reader.result});
-      this.blogForm.get('imageUrl').updateValueAndValidity();
-    };
-    reader.readAsDataURL(file);
-  }
+  // onFileSelected(event: Event) {
+  //   //this shit below helps display image uploaded
+  //   const file = (event.target as HTMLInputElement).files[0];
+  //   const reader = new FileReader();
+  //   reader.onload = () => {
+  //     this.imageDisplayUrl = reader.result;
+  //     this.blogForm.patchValue({imageUrl: reader.result});
+  //     this.blogForm.get('imageUrl').updateValueAndValidity();
+  //   };
+  //   reader.readAsDataURL(file);
+  // }
+
+  onFileSelected(e) {
+    const fileSize = e.target.files[0].size/1024/1024;
+    if (fileSize > 1.048487) {
+      const width = 700;
+      const height = 266;
+      let data;
+      const fileName = e.target.files[0].name;
+      const reader = new FileReader();
+      reader.readAsDataURL(e.target.files[0]);
+      reader.onload = (event) => {
+          const img = new Image();
+          img.src = event.target.result as string;
+          img.onload = () => {
+                  const elem = document.createElement('canvas');
+                  elem.width = width;
+                  elem.height = height;
+                  const ctx = elem.getContext('2d');
+                  // img.width and img.height will contain the original dimensions
+                  ctx.drawImage(img, 0, 0, width, height);
+                  data = ctx.canvas.toDataURL('image/png', 1);
+              reader.onerror = error => console.log(error);
+              this.blogForm.patchValue({imageUrl: data});
+              this.blogForm.get('imageUrl').updateValueAndValidity();
+              this.imageDisplayUrl = event.target.result;
+       }
+     }
+   } else {
+       const file = (e.target as HTMLInputElement).files[0];
+       const reader = new FileReader();
+       reader.onload = () => {
+         this.imageDisplayUrl = reader.result;
+         this.blogForm.patchValue({imageUrl: reader.result});
+         this.blogForm.get('imageUrl').updateValueAndValidity();
+       };
+       reader.readAsDataURL(file);
+   }
+
+ }
 
 }
