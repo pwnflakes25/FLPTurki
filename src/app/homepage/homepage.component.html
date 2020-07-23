@@ -45,9 +45,9 @@
             <div class="description">{{blog.description}}</div>
           </div>
           <div class="buttonWrapper">
-            <div (click)="showFirst=!showFirst;" *ngIf="authService.user$ | async">
-              <i class="small material-icons"  (click)="minusLikes(blog.id)" *ngIf="showFirst">favorite</i>
-              <i class="small material-icons" (click)="addLikes(blog.id)" *ngIf="!showFirst">favorite_border</i>
+            <div *ngIf="currentUserId">
+               <i class="small material-icons" *ngIf="checkIfCurrentUserLiked(blog)"  (click)="minusLikes(blog)" >favorite</i>
+               <i class="small material-icons"  *ngIf="!checkIfCurrentUserLiked(blog)" (click)="addLikes(blog)">favorite_border</i>
             </div>
             <a class="primaryButton waves-effect" [routerLink]="['/blog']" [queryParams]="{id: blog.id}">Read More</a>
           </div>

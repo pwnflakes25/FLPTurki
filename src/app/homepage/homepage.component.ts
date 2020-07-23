@@ -1,7 +1,8 @@
-import { Component, OnInit, AfterViewInit } from '@angular/core';
+import { Component, OnInit, AfterViewInit, OnDestroy } from '@angular/core';
 import {Blog} from '../blog/blog.model';
 import { BlogService } from "../blog.service";
-import {Observable} from 'rxjs';
+import {Observable, Subscription} from 'rxjs';
+import {take} from 'rxjs/operators';
 import {AuthService} from '../auth/auth.service';
 declare const M;
 
@@ -10,14 +11,20 @@ declare const M;
   templateUrl: './homepage.component.html',
   styleUrls: ['./homepage.component.scss']
 })
-export class HomepageComponent implements OnInit, AfterViewInit {
+export class HomepageComponent implements OnInit, AfterViewInit, OnDestroy {
 blogs: Observable<any>;
 showFirst: boolean = false;
+currentUserId: string;
+userSub: Subscription;
+blogSub: Subscription;
 
-  constructor(private bs: BlogService, public authService: AuthService) { }
+  constructor(private bs: BlogService, private authService: AuthService) { }
 
   ngOnInit(): void {
     this.blogs = this.bs.getBlogs();
+    this.userSub = this.authService.getCurrentUser().subscribe(user => {
+      this.currentUserId = user.uid;
+    })
   }
 
   ngAfterViewInit(): void {
@@ -25,12 +32,33 @@ showFirst: boolean = false;
     let instances = M.FloatingActionButton.init(elems);
   }
 
-  addLikes(id: string) {
-    this.bs.addLikeToBlog(id);
+  addLikes(blog: any) {
+      blog.userLikes.push(this.currentUserId);
+      blog.likes += 1;
+      this.bs.updateBlog(blog.id, blog);
   }
 
-  minusLikes(id: string) {
-    this.bs.minusLikeToBlog(id);
+  minusLikes(blog: any) {
+      blog.likes -= 1;
+      //below finds the user id in the array userLikes of the edited blog
+      let index = blog.userLikes.indexOf(this.currentUserId);
+        if (index > -1) {
+           blog.userLikes.splice(index, 1);
+         }
+      this.bs.updateBlog(blog.id, blog);
+  }
+
+  checkIfCurrentUserLiked(blog: any) {
+    return blog.userLikes.includes(this.currentUserId);
+  }
+
+  ngOnDestroy(): void {
+    if (this.userSub) {
+      this.userSub.unsubscribe();
+    }
+    if (this.blogSub) {
+      this.blogSub.unsubscribe();
+    }
   }
 
 }

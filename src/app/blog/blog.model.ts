@@ -11,6 +11,7 @@ export interface Blog {
      isPublished: boolean;
      views: number;
      likes: number;
+     userLikes: string[];
      genres: string[];
      references: string[];
 
