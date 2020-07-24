@@ -12,6 +12,30 @@ section {
     height: 24rem;
   }
 
+  .headerSection {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .likeBox {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    i {
+      margin-bottom: 1rem;
+    }
+  }
+
+
+
+  .chip {
+    background: var(--secondary-color);
+    color: white;
+    margin-bottom: 2rem;
+  }
+
 
   .authorInfo {
     align-self: center;

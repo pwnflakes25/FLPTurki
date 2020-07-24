@@ -104,6 +104,10 @@ body {
 	top:1px;
 }
 
+.primaryButton:disabled {
+	background: #f0f0f4;
+}
+
 .authorImageContainer {
   display: flex;
   justify-content: center;

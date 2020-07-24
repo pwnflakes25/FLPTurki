@@ -25,8 +25,19 @@
        by <span>{{author.fullName}}</span> a student at <span>{{author.company}}</span>
     </div>
     <div class="blogContent container" *ngIf="blog">
-      <div class="title">
-        {{blog.title}}
+      <div class="headerSection">
+        <div class="title">
+          {{blog.title}}
+        </div>
+        <div class="likeBox">
+          <i class="material-icons">favorite</i>
+          <div class="">
+            {{blog.likes}} Likes
+          </div>
+        </div>
+      </div>
+      <div class="chip" *ngFor="let genre of blog.genres;let i = index;">
+        {{genre}}
       </div>
       <div class="contentText" [innerHTML]="blog.content">
       </div>

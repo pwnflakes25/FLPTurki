@@ -128,7 +128,7 @@ genres = genres;
     try {
       this.bs.addBlog(this.blogForm.value);
       alert("Success!");
-      this.router.navigate(['/'])
+      this.router.navigate(['/']);
     } catch (error) {
       alert(error);
     }
