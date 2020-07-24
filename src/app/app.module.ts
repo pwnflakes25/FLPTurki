@@ -7,7 +7,6 @@ import { environment } from '../environments/environment';
 import { ReactiveFormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatStepperModule} from '@angular/material/stepper';
-import { FroalaEditorModule, FroalaViewModule } from 'angular-froala-wysiwyg';
 import { FormsModule } from '@angular/forms';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -21,6 +20,8 @@ import {AuthService} from "./auth/auth.service";
 import { BlogEditComponent } from './blog/blog-edit/blog-edit.component';
 import { HeaderComponent } from './header/header.component';
 import { AuthComponent } from './auth/auth/auth.component';
+import { AngularEditorModule } from '@kolkov/angular-editor';
+import { HttpClientModule} from '@angular/common/http';
 
 
 @NgModule({
@@ -42,9 +43,9 @@ import { AuthComponent } from './auth/auth/auth.component';
     AngularFireAnalyticsModule,
     ReactiveFormsModule,
     MatStepperModule,
-    FroalaEditorModule,
-    FroalaViewModule,
-    FormsModule
+    FormsModule,
+    AngularEditorModule,
+    HttpClientModule
   ],
   providers: [BlogService, AuthorService, AuthService],
   bootstrap: [AppComponent]

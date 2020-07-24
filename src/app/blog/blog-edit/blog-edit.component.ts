@@ -1,6 +1,7 @@
 import { Component, OnInit, AfterViewInit } from '@angular/core';
 import { Router, ActivatedRoute, ParamMap } from '@angular/router';
 import { FormGroup, FormControl, FormArray } from '@angular/forms';
+import { AngularEditorConfig } from '@kolkov/angular-editor';
 import { BlogService } from "../../blog.service";
 import {AuthService} from '../../auth/auth.service';
 import {Blog} from '../blog.model';
@@ -36,12 +37,10 @@ blogForm = new FormGroup({
     references: new FormControl('')
 });
 edit: boolean = false;
-options: Object = {
-  placeholderText: 'Write your content here...',
-  charCounterCount: true,
-  attribution: false,
-  htmlAllowedStyleProps: ['font-family', 'font-size', 'background', 'color', 'width', 'text-align', 'vertical-align', 'background-color'],
-  editorClass: 'editorStyle'
+editorConfig: AngularEditorConfig = {
+  editable: true,
+  placeholder: 'Enter content here...',
+  defaultFontSize: '3',
 }
 selectInstance: any;
 selectedValues: any;

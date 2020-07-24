@@ -35,7 +35,7 @@
 
       <div class="row">
         <div class="col s12">
-          <textarea [froalaEditor]='options' placeholder="Write your content here..." id="contentInput" formControlName="content" class="materialize-textarea"></textarea>
+          <angular-editor formControlName="content" [config]="editorConfig"></angular-editor>
         </div>
       </div>
 

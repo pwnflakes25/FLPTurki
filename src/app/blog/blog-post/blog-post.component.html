@@ -28,7 +28,7 @@
       <div class="title">
         {{blog.title}}
       </div>
-      <div class="text" [froalaView]="blog.content">
+      <div class="contentText" [innerHTML]="blog.content">
       </div>
       <blockquote>
         {{blog.summary}}
