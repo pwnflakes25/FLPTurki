@@ -13,9 +13,9 @@
         <div class="swiper-wrapper">
             <div class="swiper-slide card-panel" [routerLink]="['/blog']" [queryParams]="{id: blog.id}" *ngFor="let blog of blogs | async | sortAndLimitPipe: 'likes'" [style.background-image]="'url('+blog.imageUrl+')'">
               <div class="panel-header">
-                <div class="" style="margin-left: 1rem;">
-                  {{blog.title}}
-                </div>
+              </div>
+              <div class="headerBox" style="margin-left: 1rem;">
+                {{blog.title}}
               </div>
             </div>
         </div>

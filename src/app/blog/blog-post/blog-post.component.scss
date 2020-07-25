@@ -14,18 +14,16 @@ section {
 
   .headerSection {
     display: flex;
-
-    .title {
-      flex-grow: 3;
-    }
+    flex-wrap: wrap;
+    justify-content: space-between;
   }
 
   .likeBox {
     display: flex;
     flex-direction: column;
-    justify-content: center;
     align-items: center;
     text-align: center;
+    justify-content: center;
 
     i {
       margin-bottom: 1rem;
@@ -91,6 +89,16 @@ section {
   section {
     .card {
       padding: 1rem;
+
+      .headerSection {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: flex-start;
+      }
+    }
+
+    .likeBox {
+      margin-bottom: 2rem;
     }
   }
 }

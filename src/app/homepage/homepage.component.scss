@@ -46,8 +46,8 @@
 
   .panel-header {
     position: absolute;
-    background: rgb(167,154,149);
-    background: linear-gradient(0deg, rgba(167,154,149,1) 28%, rgba(199,190,187,0.9164040616246498) 57%, rgba(255,255,255,0) 100%);
+    background-color: black;
+    opacity: 0.5;
     bottom: 0px;
     height: 4rem;
     display: flex;
@@ -56,6 +56,11 @@
     border-radius: 0px 0px 35px 35px;
     left: 0px;
     width: 100%;
+  }
+
+  .headerBox {
+    position: absolute;
+    bottom: 1rem;
     color: white;
     font-size: 20px;
   }
@@ -142,9 +147,9 @@
    font-size: 40px;
   }
   .likeIconContainer {
-    margin-top: -6rem;
+    margin-top: -12rem;
     position: absolute;
-    right: -1.6rem;
+    right: 0rem;
   }
   .buttonWrapper {
     display: flex;
