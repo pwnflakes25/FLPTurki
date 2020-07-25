@@ -58,6 +58,7 @@ body {
   min-height: 100vh;
   display: flex;
   flex-direction: column;
+  overflow-x: hidden;
   background: linear-gradient(150.65deg, #FCEED1 0%, rgba(217, 194, 186, 0.98) 52.11%, rgba(152, 174, 182, 0.98) 100%);
 }
 
