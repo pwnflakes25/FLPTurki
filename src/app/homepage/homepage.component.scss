@@ -126,13 +126,16 @@
 }
 
 @media only screen and (max-width: 600px) {
-  .card {
+  .blogListContainer {
+    padding-left: 0px;
+  }
+  .card{
     flex: auto;
-    width: 80%;
+    margin: 1rem 8px 0px 8px;
   }
   section {
-    padding-left: 1rem;
-    padding-right: 1rem;
+    padding-left: 2px;
+    padding-right: 4px;
   }
   .material-icons {
    margin: 0px 4px 0px 0px;
