@@ -35,6 +35,11 @@ body {
   margin: 1rem;
 }
 
+.fixed-action-btn {
+  max-height: 5rem;
+  bottom: 5rem;
+}
+
 .btn-floating {
   background-color: transparent;
   color: white;
@@ -43,6 +48,7 @@ body {
   align-items: center;
   width: 5rem !important;
   height: 5rem !important;
+  bottom: 1rem;
 
   .material-icons {
     font-size: 36px;
