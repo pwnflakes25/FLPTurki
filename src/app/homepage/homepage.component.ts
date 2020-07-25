@@ -5,6 +5,7 @@ import {Observable, Subscription} from 'rxjs';
 import {take} from 'rxjs/operators';
 import {AuthService} from '../auth/auth.service';
 declare const M;
+declare const Swiper;
 
 @Component({
   selector: 'app-homepage',
@@ -30,8 +31,26 @@ blogSub: Subscription;
   ngAfterViewInit(): void {
     let elems = document.querySelectorAll('.fixed-action-btn');
     let instances = M.FloatingActionButton.init(elems);
-
     //below make FAB background to blue on scroll and make it transparent again after done
+      let swiper = new Swiper('.swiper-container', {
+       slidesPerView: 'auto',
+       spaceBetween: 10,
+       breakpoints: {
+        640: {
+          slidesPerView: 2,
+          spaceBetween: 40,
+        },
+        768: {
+          slidesPerView: 4,
+          spaceBetween: 50,
+        },
+        1024: {
+          slidesPerView: 5,
+          spaceBetween: 50,
+        }
+       }
+      })
+
     var timer = null;
       window.addEventListener('scroll', () => {
           if(timer !== null) {

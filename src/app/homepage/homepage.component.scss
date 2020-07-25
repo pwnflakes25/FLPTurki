@@ -1,7 +1,7 @@
 
   section {
-    padding-left: 4rem;
-    padding-right: 4rem;
+    padding-left: 2rem;
+    padding-right: 2rem;
   }
 
   .blogListContainer {
@@ -11,7 +11,14 @@
   }
 
   .featuredBlogListContainer {
+    padding: 1rem;
     display: flex;
+    width: 100%;
+  }
+
+  .swiper-container {
+    width: 100%;
+    height: 25rem;
     padding: 1rem;
   }
 
@@ -19,24 +26,45 @@
     background-color: var(--secondary-color);
   }
 
+ .swiper-slide {
+   box-shadow: none;
+ }
 
 .card-panel {
-  width: 15rem;
-  height: 15rem;
+  position: relative;
+  width: 18rem;
+  height: 18rem;
   border-radius: 35px;
-  background-image: url('/assets/blue.jpg');
+  margin-right: 1rem;
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
-  box-shadow:  20px 20px 60px #d6cab2,
-             -20px -20px 60px #fffff0;
+  cursor: pointer;
+  box-shadow:  11px 11px 22px #cdb8b0,
+             -11px -11px 22px #ebd4ca;
+  transition: all 0.8s ease;
 
   .panel-header {
-    margin-top: 70%;
+    position: absolute;
+    background: rgb(167,154,149);
+    background: linear-gradient(0deg, rgba(167,154,149,1) 28%, rgba(199,190,187,0.9164040616246498) 57%, rgba(255,255,255,0) 100%);
+    bottom: 0px;
+    height: 4rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    border-radius: 0px 0px 35px 35px;
+    left: 0px;
+    width: 100%;
     color: white;
     font-size: 20px;
   }
+
+  &:hover {
+    filter: brightness(1.1);
+  }
 }
+
 
 .card {
   flex: 1;

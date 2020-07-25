@@ -9,14 +9,19 @@
 
   <section>
     <div class="bigLabel">Featured Blogs</div>
-    <div class="featuredBlogListContainer">
-        <div class="card-panel">
-          <div class="panel-header">
-            Some Title Here
-          </div>
+      <div class="swiper-container">
+        <div class="swiper-wrapper">
+            <div class="swiper-slide card-panel" [routerLink]="['/blog']" [queryParams]="{id: blog.id}" *ngFor="let blog of blogs | async | sortAndLimitPipe: 'likes'" [style.background-image]="'url('+blog.imageUrl+')'">
+              <div class="panel-header">
+                <div class="" style="margin-left: 1rem;">
+                  {{blog.title}}
+                </div>
+              </div>
+            </div>
         </div>
-    </div>
+      </div>
   </section>
+
   <section>
     <div class="bigLabel">Recent Blogs</div>
 
@@ -41,7 +46,7 @@
         <div class="card-stacked">
           <div class="card-content">
             <div class="date">{{blog.date.toDate() | date}}</div>
-            <div class="heading">{{blog.title}}</div>
+            <div class="heading"  [routerLink]="['/blog']" [queryParams]="{id: blog.id}">{{blog.title}}</div>
             <div class="description">{{blog.description}}</div>
           </div>
           <div class="buttonWrapper">

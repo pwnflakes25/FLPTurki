@@ -22,6 +22,7 @@ import { HeaderComponent } from './header/header.component';
 import { AuthComponent } from './auth/auth/auth.component';
 import { AngularEditorModule } from '@kolkov/angular-editor';
 import { HttpClientModule} from '@angular/common/http';
+import { SortAndLimitPipePipe } from './homepage/sort-and-limit-pipe.pipe';
 
 
 @NgModule({
@@ -32,7 +33,8 @@ import { HttpClientModule} from '@angular/common/http';
     AuthorProfileComponent,
     BlogEditComponent,
     HeaderComponent,
-    AuthComponent
+    AuthComponent,
+    SortAndLimitPipePipe
   ],
   imports: [
     BrowserModule,
@@ -45,7 +47,7 @@ import { HttpClientModule} from '@angular/common/http';
     MatStepperModule,
     FormsModule,
     AngularEditorModule,
-    HttpClientModule
+    HttpClientModule,
   ],
   providers: [BlogService, AuthorService, AuthService],
   bootstrap: [AppComponent]
