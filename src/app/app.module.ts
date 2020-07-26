@@ -8,6 +8,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatStepperModule} from '@angular/material/stepper';
 import { FormsModule } from '@angular/forms';
+import {MatMenuModule} from '@angular/material/menu';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -48,6 +49,7 @@ import { SortAndLimitPipePipe } from './homepage/sort-and-limit-pipe.pipe';
     FormsModule,
     AngularEditorModule,
     HttpClientModule,
+    MatMenuModule
   ],
   providers: [BlogService, AuthorService, AuthService],
   bootstrap: [AppComponent]

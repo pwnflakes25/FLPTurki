@@ -57,7 +57,19 @@
                     </div>
                   </div>
                   <div class="buttonWrapper">
-                    <i class="material-icons" *ngIf="currentUserId && currentUserId === blog.authorId" [routerLink]="['/create']"  [queryParams]="{edit: 'true', id: blog.id}">create</i>
+                    <i class="material-icons" [matMenuTriggerFor]="menu">more_vert</i>
+                    <mat-menu #menu="matMenu" yPosition="above" xPosition="before" class="settingMenu">
+                      <ul>
+                        <li mat-menu-item class="menuItem"  [routerLink]="['/create']"  [queryParams]="{edit: 'true', id: blog.id}">
+                            <i class="material-icons" *ngIf="currentUserId && currentUserId === blog.authorId">create</i>
+                            <p>Edit</p>
+                        </li>
+                        <li mat-menu-item class="menuItem" (click)="onDelete(blog.authorId, blog.id)">
+                            <i class="material-icons" *ngIf="currentUserId && currentUserId === blog.authorId">cancel</i>
+                            <p>Delete</p>
+                        </li>
+                      </ul>
+                    </mat-menu>
                   </div>
               </div>
             </div>

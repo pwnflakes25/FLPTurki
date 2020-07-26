@@ -67,28 +67,11 @@ export class BlogService {
     this.blogDoc.update(blog);
   }
 
-  //fix this shit
-  // addLikeToBlog(id: string, userId: string) {
-  //   this.blogDoc = this.af.doc<Blog>(`blogs/${id}`);
-  //   this.blogDoc.valueChanges().pipe(take(1)).subscribe(blog => {
-  //      blog.likes += 1;
-  //      blog.userLikes.push(userId);
-  //      console.log(blog)
-  //      this.updateBlog(id, blog);
-  //   })
-  // }
+  deleteBlog(blogId : string) {
+    this.blogDoc = this.af.doc<Blog>(`blogs/${blogId}`);
+    this.$blog = this.blogDoc.valueChanges();
+    this.blogDoc.delete();
+  }
 
-  // minusLikeToBlog(id: string, userId: string) {
-  //   this.blogDoc = this.af.doc<Blog>(`blogs/${id}`);
-  //   this.blogDoc.valueChanges().pipe(take(1)).subscribe(blog => {
-  //      blog.likes -= 1;
-  //      //below search for current userId in the userLikes array and remove it
-  //      let index = blog.userLikes.indexOf(userId);
-  //      if (index > -1) {
-  //         blog.userLikes.splice(index, 1);
-  //       }
-  //      this.updateBlog(id, blog);
-  //   })
-  // }
 
 }

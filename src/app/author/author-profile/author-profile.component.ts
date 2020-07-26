@@ -40,6 +40,18 @@ defaultProfilePic = "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profil
   }
 
   ngAfterViewInit(): void {
+
+  }
+
+  onDelete(authorId: string, blogId: string) {
+    if (authorId == this.currentUserId) {
+      try {
+        this.bs.deleteBlog(blogId);
+        alert('Deleted Sucessfully');
+      } catch (error) {
+        alert(error);
+      }
+    }
   }
 
   ngOnDestroy(): void {
