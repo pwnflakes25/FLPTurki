@@ -18,7 +18,7 @@
 
   .swiper-container {
     width: 100%;
-    height: 25rem;
+    height: 26rem;
     padding: 1rem;
   }
 
@@ -40,16 +40,17 @@
   background-repeat: no-repeat;
   background-size: cover;
   cursor: pointer;
-  box-shadow:  11px 11px 22px #cdb8b0,
-             -11px -11px 22px #ebd4ca;
+  box-shadow:  12px 12px 24px #baa7a0,
+             -12px -12px 24px #fce3d8;
   transition: all 0.8s ease;
 
   .panel-header {
     position: absolute;
     background-color: black;
-    opacity: 0.5;
+    backdrop-filter: blur(4px);
+    opacity: 0.6;
     bottom: 0px;
-    height: 4rem;
+    min-height: 4rem;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -136,7 +137,7 @@
   }
   .card{
     flex: auto;
-    margin: 1rem 8px 0px 8px;
+    margin: 1rem 1rem 0px 8px;
   }
   section {
     padding-left: 2px;

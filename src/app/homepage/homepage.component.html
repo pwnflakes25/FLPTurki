@@ -47,7 +47,7 @@
         <div class="card-stacked">
           <div class="card-content">
             <div class="date">{{blog.date.toDate() | date}}</div>
-            <div class="heading"  [routerLink]="['/blog']" [queryParams]="{id: blog.id}">{{blog.title}}</div>
+            <div class="heading"  [routerLink]="['/blog']" [queryParams]="{id: blog.id}" style="cursor:pointer">{{blog.title}}</div>
             <div class="description">{{blog.description}}</div>
           </div>
           <div class="buttonWrapper">

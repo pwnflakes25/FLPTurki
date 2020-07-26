@@ -34,25 +34,11 @@ blogSub: Subscription;
     //below make FAB background to blue on scroll and make it transparent again after done
       let swiper = new Swiper('.swiper-container', {
        slidesPerView: 'auto',
-       spaceBetween: 10,
+       spaceBetween: 20,
        scrollbar: {
           el: '.swiper-scrollbar',
           hide: true,
-        },
-       breakpoints: {
-        640: {
-          slidesPerView: 1,
-          spaceBetween: 20,
-        },
-        768: {
-          slidesPerView: 4,
-          spaceBetween: 50,
-        },
-        1024: {
-          slidesPerView: 5,
-          spaceBetween: 50,
         }
-       }
       })
 
     var timer = null;
