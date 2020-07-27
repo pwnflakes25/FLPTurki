@@ -91,16 +91,21 @@ body {
   display: flex;
   border-radius: 8px;
   min-width: 8rem;
-  min-height: 2rem;
-  background: rgb(152,174,182);
-  background: linear-gradient(90deg, rgba(152,174,182,1) 19%, rgba(190,172,166,1) 36%);
+  min-height: 3rem;
+  justify-content: center;
+  align-items: center;
+  // background: rgb(152,174,182);
+  // background: linear-gradient(90deg, rgba(152,174,182,1) 19%, rgba(190,172,166,1) 36%);
+  background: #D9C2BA;
+  box-shadow:  9px 9px 18px #bda9a2,
+             -9px -9px 18px #f5dbd2;
   margin: 8px 8px 0px 0px;
 	cursor:pointer;
-	color: white;
+	color: #4B3B42;
 	font-size:17px;
 	padding:2px 31px 2px 31px;
-  opacity: 0.6;
-  transition: opacity 0.8s linear;
+  opacity: 0.7;
+  transition: all 0.4s linear 0.4;
 }
 .primaryButton:hover {
   background: rgb(190,172,166);
@@ -115,6 +120,7 @@ body {
 .primaryButton:disabled {
 	background: #f0f0f4;
 }
+
 
 .authorImageContainer {
   display: flex;

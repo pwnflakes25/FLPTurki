@@ -18,6 +18,10 @@
    justify-content: flex-end;
    align-items: flex-end;
    padding: 0px 1rem 1rem 0px;
+
+   .primaryButton {
+     box-shadow: none;
+   }
  }
 
 .mainCard {
@@ -104,7 +108,7 @@
  .accountEditCard {
   border-radius: 20px;
   margin: 0px 4rem 0rem 4rem;
-  padding: 2rem;
+  padding: 4rem;
 }
 
 

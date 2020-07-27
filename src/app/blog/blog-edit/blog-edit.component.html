@@ -19,6 +19,16 @@
     </div>
   <form [formGroup]="blogForm" class="">
 
+    <div class="row">
+      <div class="input-field col s6">
+        <select multiple formControlName="genres">
+          <option value="" disabled selected>Pilih Genre</option>
+          <option [value]="genre" *ngFor="let genre of genres; let i = index;">{{genre}}</option>
+        </select>
+        <label>Genre</label>
+      </div>
+    </div>
+
       <div class="row">
         <div class="input-field col s12">
          <input placeholder="Write your blog title here..." type="text" id="titleInput" formControlName="title">
@@ -47,7 +57,7 @@
       </div>
 
       <div class="row referencesBar">
-          <div class="input-field col s8">
+          <div class="input-field col s11">
              <input placeholder="Add Reference" #referenceInput type="text" id="referenceInput">
              <label for="referenceInput" class="active">Add Reference</label>
               <i class="material-icons prefix" id="addReferenceButton" (click)="addReference(referenceInput.value)">add</i>
@@ -60,15 +70,6 @@
         </ul>
       </div>
 
-      <div class="row">
-        <div class="input-field col s4">
-          <select multiple formControlName="genres">
-            <option value="" disabled selected>Pilih Genre</option>
-            <option [value]="genre" *ngFor="let genre of genres; let i = index;">{{genre}}</option>
-          </select>
-          <label>Genre</label>
-        </div>
-      </div>
 
       <div class="buttonWrapper">
         <a class="primaryButton" (click)="onSaveBlog()"> <i class="material-icons">save</i> Save</a>

@@ -127,13 +127,13 @@ section {
    }
 
    .primaryButton {
-     display: flex;
-     flex-direction: column;
-     flex-wrap: wrap;
-     justify-content: center;
-     align-items: flex-start;
-     margin-right: 1rem;
+     box-shadow: none;
+
+     .material-icons {
+       margin-right: 8px;
+     }
    }
+
   }
 }
 

@@ -41,6 +41,7 @@ editorConfig: AngularEditorConfig = {
   editable: true,
   placeholder: 'Enter content here...',
   defaultFontSize: '3',
+  minHeight: '15rem'
 }
 selectInstance: any;
 selectedValues: any;
