@@ -1,5 +1,5 @@
 <section>
-  <div class="blogImage" [style.background-image]="'url('+blog.imageUrl+')'">
+  <div class="blogImage" *ngIf="blog" [style.background-image]="'url('+blog.imageUrl+')'">
     <div class="backArrow"><i class="medium material-icons" [routerLink]="['../']">chevron_left</i></div>
   </div>
   <div class="card">
@@ -19,7 +19,7 @@
     </div>
 
     <div class="authorImageContainer">
-      <div class="authorImage" [style.background-image]="'url('+author.profileImageUrl+')'" routerLink="/author" [queryParams]="{id: blog.authorId}"></div>
+      <div class="authorImage" *ngIf="author" [style.background-image]="'url('+author.profileImageUrl+')'" routerLink="/author" [queryParams]="{id: blog.authorId}"></div>
     </div>
     <div class="authorInfo" *ngIf="author">
        by <span>{{author.fullName}}</span> a student at <span>{{author.company}}</span>

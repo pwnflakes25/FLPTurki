@@ -30,7 +30,6 @@ author: Author;
       this.isLoading = false;
       this.as.getAuthorById(blog.authorId).subscribe(author => {
         this.author = author;
-        console.log(this.author);
       })
     })
    });

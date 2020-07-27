@@ -47,8 +47,8 @@
   .panel-header {
     position: absolute;
     background-color: black;
-    backdrop-filter: blur(4px);
-    opacity: 0.6;
+    backdrop-filter: blur(6px);
+    opacity: 0.4;
     bottom: 0px;
     min-height: 4rem;
     display: flex;
@@ -79,8 +79,11 @@
   display: flex;
   align-items: center;
   background: #D9C2BA;
-  box-shadow:  20px 20px 60px #b8a59e,
-             -20px -20px 60px #fadfd6;
+  // box-shadow:  20px 20px 60px #b8a59e,
+  //            -20px -20px 60px #fadfd6;
+  box-shadow:  12px 12px 24px #baa7a0,
+             -12px -12px 24px #fce3d8;
+
 
   .cardImg {
     width: 40%;
@@ -137,7 +140,7 @@
   }
   .card{
     flex: auto;
-    margin: 1rem 1rem 0px 8px;
+    margin: 1rem 1rem 10px 8px;
   }
   section {
     padding-left: 2px;

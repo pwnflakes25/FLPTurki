@@ -1,6 +1,7 @@
 import { Component, OnInit, AfterViewInit } from '@angular/core';
 import {AuthService} from '../auth/auth.service';
-import { Router, ActivatedRoute, ParamMap } from '@angular/router';
+import { Router, ActivatedRoute, NavigationStart, Event, NavigationEnd } from '@angular/router';
+import { Location } from "@angular/common";
 import {Subscription} from 'rxjs';
 declare const M;
 
@@ -13,13 +14,14 @@ export class HeaderComponent implements OnInit, AfterViewInit {
 isAuth = false;
 private user;
 userSub: Subscription;
+isOnBlog:boolean = false;
 
-  constructor(public authService: AuthService, private router: Router) { }
+  constructor(public authService: AuthService, private router: Router, private location: Location) { }
 
   ngOnInit(): void {
     this.authService.getCurrentUser().subscribe(user => {
       this.user = user;
-    })
+    });
   }
 
   ngAfterViewInit(): void {

@@ -3,26 +3,39 @@ nav {
   position: absolute;
   box-shadow: none!important;
   padding-right: 4rem;
+  padding-left: 0px;
 
 
   .brand-logo {
     font-size: 18px;
-    margin-left: 5rem;
+    margin-left: 6rem;
+    margin-top: 1rem;
+    background-image: url('/assets/flp_logo.png');
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    width: 4rem;
+    height: 4rem;
   }
-}
 
-.brand-logo {
-  background-image: url('/assets/flp_logo.png');
-  background-position: center;
-  background-size: cover;
-  background-repeat: no-repeat;
-  width: 5rem;
-  height: 6rem;
+  .sidenav-trigger {
+    display: flex;
+    background: #f8e9ce;
+    box-shadow:  21px 21px 42px #cbbfa9,
+             -21px -21px 42px #fffff3;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    width: 4rem;
+    height: 4rem;
+    border-radius: 50%;
+    margin-top: 1rem;
+    cursor: pointer;
+  }
 }
 
 .sidenav {
   background: var(--background-gradient);
-
   li {
     a, i {
       cursor: pointer;
