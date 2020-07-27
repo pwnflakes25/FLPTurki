@@ -2,16 +2,29 @@
 
   <div class="authorBannerImage">
     <div class="backArrow"><i class="medium material-icons" [routerLink]="['../']">chevron_left</i></div>
+    <div class="" *ngIf="(author$ | async) as author">
+      <i class="material-icons right" id="settingButton" *ngIf="currentUserId && urlAuthorId && currentUserId === urlAuthorId" [matMenuTriggerFor]="settings">settings</i>
+      <mat-menu #settings="matMenu" yPosition="below" xPosition="before" class="settingMenu">
+        <ul>
+          <li mat-menu-item class="menuItem"  (click)="isEdit = true; settingOption = 'account'; this.patchAccountForm(author)">
+              <i class="material-icons">account_circle</i>
+              Account
+          </li>
+        </ul>
+      </mat-menu>
+    </div>
   </div>
 
-    <div class="card mainCard">
+
+
+
+    <div class="card mainCard" *ngIf="!isEdit">
 
       <div class="authorDetails" *ngIf="(author$ | async) as author">
 
         <div class="authorImageContainer z-depth-2">
           <div class="authorImage" [style.background-image]="'url('+author.profileImageUrl+')'"></div>
         </div>
-
 
         <div class="authorInfo">
           <div class="header center">{{author.fullName}}</div>
@@ -24,7 +37,6 @@
             <div class="">{{blogs.length}}</div>
           </div>
         </div>
-
 
       </div>
 
@@ -42,7 +54,6 @@
             </div>
           </div>
 
-
             <div class="blogListContainer" *ngSwitchCase="false">
 
               <div class="card blogCards z-depth-2" *ngFor="let blog of blogs; let i = index;">
@@ -50,14 +61,14 @@
                   <div class="card-bottom-half">
                     <div class="date" style="margin-left: 4px;">{{blog.date.toDate() | date}}</div>
                     <div class="card-title">
-                      <div class="heading">{{blog.title}}</div>
+                      <div class="heading" style="cursor:pointer" [routerLink]="['/blog']" [queryParams]="{id: blog.id}">{{blog.title}}</div>
                     </div>
                     <div class="card-content">
                       <div class="description">{{blog.description}}</div>
                     </div>
                   </div>
                   <div class="buttonWrapper">
-                    <i class="material-icons" [matMenuTriggerFor]="menu">more_vert</i>
+                    <i class="material-icons" [matMenuTriggerFor]="menu" *ngIf="currentUserId && currentUserId === blog.authorId">more_vert</i>
                     <mat-menu #menu="matMenu" yPosition="above" xPosition="before" class="settingMenu">
                       <ul>
                         <li mat-menu-item class="menuItem"  [routerLink]="['/create']"  [queryParams]="{edit: 'true', id: blog.id}">
@@ -73,9 +84,51 @@
                   </div>
               </div>
             </div>
-
-
       </div>
-
     </div>
+
+
+
+
+    <div class="authorSettingEdit" *ngIf="isEdit">
+       <div class="card accountEditCard">
+
+         <div class="subTitle">
+           Edit Profile
+         </div>
+         <div class="formWrapper" *ngIf="settingOption === 'account'">
+           <form [formGroup]="accountForm">
+
+             <div class="row">
+               <div class="input-field col s12">
+                <input placeholder="Write your blog title here..." type="text" id="titleInput" formControlName="fullName">
+                 <label class="active" for="titleInput">Full Name</label>
+               </div>
+             </div>
+
+             <div class="row">
+               <div class="input-field col s12">
+                <input placeholder="Write your blog title here..." type="text" id="titleInput" formControlName="authorAbout">
+                 <label class="active" for="titleInput">About You</label>
+               </div>
+             </div>
+
+             <div class="row">
+               <div class="input-field col s12">
+                <input placeholder="Write your blog title here..." type="text" id="titleInput" formControlName="company">
+                 <label class="active" for="titleInput">Company</label>
+               </div>
+             </div>
+
+             <div class="buttonWrapper">
+               <a class="primaryButton" (click)="isEdit = false; settingOption = ''">Cancel</a>
+               <a class="primaryButton" (click)="onSave()">Save</a>
+             </div>
+
+           </form>
+         </div>
+       </div>
+    </div>
+
+
 </div>

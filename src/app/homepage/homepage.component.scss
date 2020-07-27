@@ -122,8 +122,15 @@
 
   .buttonWrapper {
     display: flex;
-    justify-content: center;
+    justify-content: flex-start;
     padding-bottom: 1rem;
+    padding-left: 2rem;
+  }
+
+  .likeIconContainer {
+    position: absolute;
+    right: 1rem;
+    bottom: 8px;
   }
 
   .material-icons {
@@ -151,9 +158,9 @@
    font-size: 40px;
   }
   .likeIconContainer {
-    margin-top: -12rem;
     position: absolute;
-    right: 0rem;
+    right: 1rem;
+    bottom: 8px;
   }
   .buttonWrapper {
     display: flex;
@@ -165,7 +172,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    margin: 0px 4px 0px 8px;
+    margin: 0px 4px 0px 0px;
   	font-size: 16px;
     padding: 0px;
   }

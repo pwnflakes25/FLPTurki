@@ -88,18 +88,17 @@ body {
 }
 
 .primaryButton {
+  display: flex;
   border-radius: 8px;
+  min-width: 8rem;
+  min-height: 2rem;
   background: rgb(152,174,182);
   background: linear-gradient(90deg, rgba(152,174,182,1) 19%, rgba(190,172,166,1) 36%);
-  width: 10rem;
-  height: 2rem;
-  margin-top: 8px;
-	display:inline-block;
+  margin: 8px 8px 0px 0px;
 	cursor:pointer;
 	color: white;
 	font-size:17px;
-	padding:2px 31px;
-	text-decoration:none;
+	padding:2px 31px 2px 31px;
   opacity: 0.6;
   transition: opacity 0.8s linear;
 }

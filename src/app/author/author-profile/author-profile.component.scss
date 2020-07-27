@@ -1,3 +1,25 @@
+
+ #settingButton {
+    vertical-align: middle;
+    margin: 8px 8px 0px 0px;
+    opacity: 0.8;
+    color: var(--tertiary-color);
+    font-size: 40px;
+    cursor: pointer;
+    transition: all 0.5s ease 0.5s;
+
+    &:hover {
+      filter: brightness(1.1);
+    }
+ }
+
+ .buttonWrapper {
+   display: flex;
+   justify-content: flex-end;
+   align-items: flex-end;
+   padding: 0px 1rem 1rem 0px;
+ }
+
 .mainCard {
  margin-top: -2rem;
  margin-bottom: -2rem;
@@ -15,6 +37,8 @@
    justify-content: center;
    width: 60%;
  }
+
+
 
  .label {
    color: var(--secondary-color);
@@ -77,6 +101,14 @@
 }
 
 
+ .accountEditCard {
+  border-radius: 20px;
+  margin: 0px 4rem 0rem 4rem;
+  padding: 2rem;
+}
+
+
+
 
 .card .blogCards {
   width: 20rem;
@@ -113,13 +145,6 @@
   background-position: center;
   background-size: cover;
   margin-bottom: 1rem;
- }
-
- .buttonWrapper {
-   display: flex;
-   justify-content: flex-end;
-   align-items: flex-end;
-   padding: 0px 1rem 1rem 0px;
  }
 
  .material-icons {
