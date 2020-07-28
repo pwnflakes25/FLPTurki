@@ -7,8 +7,8 @@ import { environment } from '../environments/environment';
 import { ReactiveFormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatStepperModule} from '@angular/material/stepper';
-import { FormsModule } from '@angular/forms';
 import {MatMenuModule} from '@angular/material/menu';
+import {MatSelectModule} from '@angular/material/select';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -24,6 +24,7 @@ import { AuthComponent } from './auth/auth/auth.component';
 import { AngularEditorModule } from '@kolkov/angular-editor';
 import { HttpClientModule} from '@angular/common/http';
 import { SortAndLimitPipePipe } from './homepage/sort-and-limit-pipe.pipe';
+import { GenrePipePipe } from './homepage/genre-pipe.pipe';
 
 
 @NgModule({
@@ -35,7 +36,8 @@ import { SortAndLimitPipePipe } from './homepage/sort-and-limit-pipe.pipe';
     BlogEditComponent,
     HeaderComponent,
     AuthComponent,
-    SortAndLimitPipePipe
+    SortAndLimitPipePipe,
+    GenrePipePipe
   ],
   imports: [
     BrowserModule,
@@ -46,10 +48,10 @@ import { SortAndLimitPipePipe } from './homepage/sort-and-limit-pipe.pipe';
     AngularFireAnalyticsModule,
     ReactiveFormsModule,
     MatStepperModule,
-    FormsModule,
     AngularEditorModule,
     HttpClientModule,
-    MatMenuModule
+    MatMenuModule,
+    MatSelectModule
   ],
   providers: [BlogService, AuthorService, AuthService],
   bootstrap: [AppComponent]

@@ -4,6 +4,7 @@ import { BlogService } from "../blog.service";
 import {Observable, Subscription} from 'rxjs';
 import {take} from 'rxjs/operators';
 import {AuthService} from '../auth/auth.service';
+import {genres} from '../blog/blog-edit/genres';
 declare const M;
 declare const Swiper;
 
@@ -18,6 +19,11 @@ showFirst: boolean = false;
 currentUserId: string;
 userSub: Subscription;
 blogSub: Subscription;
+genres: string[] = genres;
+activeChip: { index: number; genre: string } = {
+  index: null,
+  genre: ''
+};
 
   constructor(private bs: BlogService, private authService: AuthService) { }
 
@@ -34,11 +40,20 @@ blogSub: Subscription;
     //below make FAB background to blue on scroll and make it transparent again after done
       let swiper = new Swiper('.swiper-container', {
        slidesPerView: 'auto',
-       spaceBetween: 20,
+       spaceBetween: 30,
        scrollbar: {
           el: '.swiper-scrollbar',
           hide: true,
         }
+      })
+
+      let swiper2 = new Swiper('.swiper-container2', {
+        slidesPerView: 'auto',
+        spaceBetween: 20,
+        scrollbar: {
+           el: '.swiper-scrollbar2',
+           hide: true,
+         }
       })
 
     var timer = null;
@@ -51,6 +66,29 @@ blogSub: Subscription;
             document.getElementById('fab').classList.remove('secondary-background');
           }, 1000);
       }, false);
+  }
+
+  setActiveChip(genre: string, index: number) {
+    let chips = document.getElementsByClassName("chip");
+    //below if removes the tag that is already highlighted
+    if( this.activeChip.index !== null && this.activeChip.index === index ) {
+      (<any>chips[index]).removeAttribute('style');
+      this.activeChip = {
+        index: null,
+        genre: ''
+      }
+    }
+    //below removes tag of selected tag and add it to the recently clicked one as long as the user does not click the same tag
+    else {
+      if (this.activeChip.index !== null) {
+          (<any>chips[this.activeChip.index]).removeAttribute('style');
+      }
+      (<any>chips[index]).style.backgroundColor = "#98AEB6";
+      this.activeChip = {
+        index: index,
+        genre: genre
+      }
+    }
   }
 
   addLikes(blog: any) {

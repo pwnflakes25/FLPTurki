@@ -10,6 +10,21 @@
       padding-left: 1rem;
   }
 
+  .genresContainer {
+    align-self: center;
+    margin: 2rem 1rem 4rem 1rem;
+    .chip {
+      background: #D9C2BA;
+      box-shadow:  12px 12px 24px #baa7a0,
+                 -12px -12px 24px #fce3d8;
+      min-width: 5rem;
+      max-width: 8rem;
+      text-align: center;
+      border-radius: 20px;
+      cursor: pointer;
+    }
+  }
+
   .featuredBlogListContainer {
     padding: 1rem;
     display: flex;

@@ -25,7 +25,19 @@
   </section>
 
   <section>
-    <div class="bigLabel">Recent Blogs</div>
+  <div class="bigLabel">Recent Blogs</div>
+
+   <div class="genresContainer">
+     <div class="swiper-container2">
+       <div class="swiper-wrapper">
+         <div class="chip swiper-slide" *ngFor="let genre of genres;let i = index;" (click)="setActiveChip(genre, i)">
+           {{genre}}
+         </div>
+       </div>
+       <div class="swiper-scrollbar2"></div>
+     </div>
+   </div>
+
 
    <div class="spinnerContainer" *ngIf='(blogs | async) === null'>
      <div  class="preloader-wrapper big active">
@@ -43,7 +55,7 @@
 
     <div class="blogListContainer">
 
-      <div class="card horizontal" *ngFor="let blog of blogs | async; let i = index">
+      <div class="card horizontal" *ngFor="let blog of blogs | async | genrePipe: activeChip.genre ; let i = index">
         <div class="cardImg" [style.background-image]="'url('+blog.imageUrl+')'"></div>
         <div class="card-stacked">
           <div class="card-content">
