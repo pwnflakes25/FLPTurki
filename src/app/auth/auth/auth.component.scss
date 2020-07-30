@@ -3,6 +3,18 @@
   background: linear-gradient(150.65deg, #FCEED1 0%, rgba(217, 194, 186, 0.98) 52.11%, rgba(152, 174, 182, 0.98) 100%);
 }
 
+.cancelButton {
+  color: var(--tertiary-color);
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  cursor: pointer;
+
+  &:hover {
+    filter: brightness(1.1);
+  }
+}
+
 .content {
   padding: 1rem;
 

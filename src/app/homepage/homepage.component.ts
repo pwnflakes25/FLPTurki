@@ -72,7 +72,7 @@ activeChip: { index: number; genre: string } = {
     let chips = document.getElementsByClassName("chip");
     //below if removes the tag that is already highlighted
     if( this.activeChip.index !== null && this.activeChip.index === index ) {
-      (<any>chips[index]).removeAttribute('style');
+      (<any>chips[index]).style.backgroundColor = "#D9C2BA"; //change color back to default
       this.activeChip = {
         index: null,
         genre: ''
@@ -81,7 +81,7 @@ activeChip: { index: number; genre: string } = {
     //below removes tag of selected tag and add it to the recently clicked one as long as the user does not click the same tag
     else {
       if (this.activeChip.index !== null) {
-          (<any>chips[this.activeChip.index]).removeAttribute('style');
+          (<any>chips[this.activeChip.index]).style.backgroundColor = "#D9C2BA"; //change color back to default
       }
       (<any>chips[index]).style.backgroundColor = "#98AEB6";
       this.activeChip = {

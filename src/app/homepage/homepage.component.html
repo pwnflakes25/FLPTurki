@@ -73,6 +73,12 @@
         </div>
       </div>
 
+      <div *ngIf="(blogs | async | genrePipe: activeChip.genre).length === 0" style="width: 100%;">
+        <div class="noMatchBox">
+           oops, there is no post with this category yet!
+        </div>
+      </div>
+
     </div>
   </section>
 </div>

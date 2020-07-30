@@ -7,7 +7,6 @@
   .blogListContainer {
       display: flex;
       flex-wrap: wrap;
-      padding-left: 1rem;
   }
 
   .genresContainer {
@@ -156,16 +155,39 @@
   }
 }
 
+.noMatchBox {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  color: var(--tertiary-color);
+  border-style: solid;
+  border-radius: 10px;
+  border-width: 4px;
+  border-color: currentColor;
+  background: transparent;
+  height: 15rem;
+  width: 100%;
+  font-size: 28px;
+  padding: 8px;
+
+}
+
 @media only screen and (max-width: 600px) {
   .blogListContainer {
     padding-left: 0px;
+
+    .noMatchBox {
+      width: 95%;
+      margin-left: 1rem;
+    }
   }
   .card{
     flex: auto;
     margin: 1rem 1rem 10px 8px;
   }
   section {
-    padding-left: 2px;
+    padding-left: 4px;
     padding-right: 4px;
   }
   .material-icons {
