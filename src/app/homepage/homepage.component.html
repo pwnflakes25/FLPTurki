@@ -12,7 +12,7 @@
     <div class="bigLabel">Featured Blogs</div>
       <div class="swiper-container">
         <div class="swiper-wrapper">
-            <div class="swiper-slide card-panel" [routerLink]="['/blog']" [queryParams]="{id: blog.id}" *ngFor="let blog of blogs | async | sortAndLimitPipe: 'likes'" [style.background-image]="'url('+blog.imageUrl+')'">
+            <div class="swiper-slide card-panel" [routerLink]="['/blog']" [queryParams]="{id: blog.id}" *ngFor="let blog of blogs | async | sortAndLimitPipe: 'likes' | isPublishedPipe" [style.background-image]="'url('+blog.imageUrl+')'">
               <div class="panel-header">
               </div>
               <div class="headerBox" style="margin-left: 1rem;">
@@ -55,7 +55,7 @@
 
     <div class="blogListContainer">
 
-      <div class="card horizontal" *ngFor="let blog of blogs | async | genrePipe: activeChip.genre ; let i = index">
+      <div class="card horizontal" *ngFor="let blog of blogs | async | genrePipe: activeChip.genre | isPublishedPipe ; let i = index">
         <div class="cardImg" [style.background-image]="'url('+blog.imageUrl+')'"></div>
         <div class="card-stacked">
           <div class="card-content">

@@ -25,6 +25,7 @@ import { AngularEditorModule } from '@kolkov/angular-editor';
 import { HttpClientModule} from '@angular/common/http';
 import { SortAndLimitPipePipe } from './homepage/sort-and-limit-pipe.pipe';
 import { GenrePipePipe } from './homepage/genre-pipe.pipe';
+import { IsPublishedPipe } from './homepage/is-published.pipe';
 
 
 @NgModule({
@@ -37,7 +38,8 @@ import { GenrePipePipe } from './homepage/genre-pipe.pipe';
     HeaderComponent,
     AuthComponent,
     SortAndLimitPipePipe,
-    GenrePipePipe
+    GenrePipePipe,
+    IsPublishedPipe
   ],
   imports: [
     BrowserModule,
