@@ -109,7 +109,14 @@
   border-radius: 20px;
   margin: 0px 4rem 0rem 4rem;
   padding: 4rem;
+  display: flex;
+  flex-direction: column;
+
+  #authorImageContainerEdit {
+    margin-top: -8rem;
+  }
 }
+
 
 
 

@@ -22,10 +22,11 @@ currentUserId: string;
 userSub: Subscription;
 urlAuthorId: string;
 isLoading = true;
-defaultProfilePic = "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png";
 isEdit = false;
 accountForm: FormGroup;
 settingOption: string;
+profileDisplay: string | ArrayBuffer = "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png"
+authorSub: Subscription;
 
   constructor(private bs: BlogService, private as: AuthorService, private route: ActivatedRoute, private authService: AuthService) { }
 
@@ -46,6 +47,11 @@ settingOption: string;
   }
 
   ngAfterViewInit(): void {
+    this.authorSub = this.author$.subscribe(author => {
+      if (author.profileImageUrl !== '') {
+        this.profileDisplay = author.profileImageUrl;
+      }
+    })
   }
 
 
@@ -57,6 +63,44 @@ settingOption: string;
       authorAbout: new FormControl(author.authorAbout, [Validators.required]),
       company: new FormControl(author.company, [Validators.required])
     })
+  }
+
+  onProfileImageSelect(e) {
+    const fileSize = e.target.files[0].size/1024/1024;
+    if (fileSize > 1.048487) {
+      const width = 180;
+      const height = 180;
+      let data;
+      const fileName = e.target.files[0].name;
+      const reader = new FileReader();
+      reader.readAsDataURL(e.target.files[0]);
+      reader.onload = (event) => {
+          const img = new Image();
+          img.src = event.target.result as string;
+          img.onload = () => {
+                  const elem = document.createElement('canvas');
+                  elem.width = width;
+                  elem.height = height;
+                  const ctx = elem.getContext('2d');
+                  // img.width and img.height will contain the original dimensions
+                  ctx.drawImage(img, 0, 0, width, height);
+                  data = ctx.canvas.toDataURL('image/png', 1);
+              reader.onerror = error => console.log(error);
+              this.accountForm.patchValue({profileImageUrl: data});
+              this.accountForm.get('profileImageUrl').updateValueAndValidity();
+              this.profileDisplay = event.target.result;
+       }
+     }
+   } else {
+     const file = (e.target as HTMLInputElement).files[0];
+     const reader = new FileReader();
+     reader.onload = () => {
+       this.profileDisplay = reader.result;
+       this.accountForm.patchValue({profileImageUrl: reader.result});
+       this.accountForm.get('profileImageUrl').updateValueAndValidity();
+     };
+     reader.readAsDataURL(file);
+   }
   }
 
   onDelete(authorId: string, blogId: string) {
@@ -84,6 +128,10 @@ settingOption: string;
   ngOnDestroy(): void {
    if (this.userSub) {
      this.userSub.unsubscribe();
+   }
+
+   if(this.authorSub) {
+     this.authorSub.unsubscribe();
    }
   }
 

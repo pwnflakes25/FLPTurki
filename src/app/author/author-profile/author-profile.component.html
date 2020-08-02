@@ -23,8 +23,9 @@
       <div class="authorDetails" *ngIf="(author$ | async) as author">
 
         <div class="authorImageContainer z-depth-2">
-          <div class="authorImage" [style.background-image]="'url('+author.profileImageUrl+')'"></div>
+          <div class="authorImage" [style.background-image]="'url('+profileDisplay+')'"></div>
         </div>
+
 
         <div class="authorInfo">
           <div class="header center">{{author.fullName}}</div>
@@ -90,8 +91,13 @@
 
 
 
-    <div class="authorSettingEdit" *ngIf="isEdit">
+    <div class="authorSettingEdit" *ngIf="isEdit && (author$ | async) as author">
        <div class="card accountEditCard">
+
+         <div class="authorImageContainer z-depth-2" id="authorImageContainerEdit">
+           <div class="authorImage" (click)="imagePicker.click()" [style.background-image]="'url('+profileDisplay+')'"></div>
+         </div>
+         <input type="file" accept="image/*" #imagePicker style="display: none;" (change)="onProfileImageSelect($event)" name="image"/>
 
          <div class="subTitle">
            Edit Profile
