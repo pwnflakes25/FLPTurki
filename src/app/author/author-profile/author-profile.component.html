@@ -62,7 +62,7 @@
                   <div class="card-bottom-half">
                     <div class="date" style="margin-left: 4px;">{{blog.date.toDate() | date}}</div>
                     <div class="card-title">
-                      <div class="heading" style="cursor:pointer" [routerLink]="['/blog']" [queryParams]="{id: blog.id}">{{blog.title}}</div>
+                      <div class="heading" style="cursor:pointer" [routerLink]="blog.isPublished === true? ['/blog'] : []" [queryParams]="blog.isPublished === true? {id: blog.id} : {id: ''}">{{blog.title}}</div>
                     </div>
                     <div class="card-content">
                       <div class="description">{{blog.description}}</div>
