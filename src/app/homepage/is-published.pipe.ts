@@ -6,9 +6,7 @@ import { Pipe, PipeTransform } from '@angular/core';
 export class IsPublishedPipe implements PipeTransform {
 
   transform(array: any[]): any[] {
-    if (array === null) {
-       return;
-    }
+    if (!array) return array;
 
     return array.filter(blog => blog.isPublished === true);
 

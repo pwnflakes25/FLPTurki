@@ -9,8 +9,8 @@
 
 
   <section>
-    <div class="bigLabel">Featured Blogs</div>
-      <div class="swiper-container">
+    <div class="bigLabel">Blog Trending</div>
+      <div class="swiper-container" *ngIf="(blogs | async)?.length !== 0">
         <div class="swiper-wrapper">
             <div class="swiper-slide card-panel" [routerLink]="['/blog']" [queryParams]="{id: blog.id}" *ngFor="let blog of blogs | async | sortAndLimitPipe: 'likes' | isPublishedPipe" [style.background-image]="'url('+blog.imageUrl+')'">
               <div class="panel-header">
@@ -22,10 +22,17 @@
         </div>
         <div class="swiper-scrollbar"></div>
       </div>
+
+      <div *ngIf="(blogs | async )?.length === 0" style="width: 100%;">
+        <div class="noMatchBox">
+           oops, belum ada postingan dengan kategori ini!
+        </div>
+      </div>
+
   </section>
 
   <section>
-  <div class="bigLabel">Recent Blogs</div>
+  <div class="bigLabel">Blog Terbaru</div>
 
    <div class="genresContainer">
      <div class="swiper-container2">
@@ -64,7 +71,7 @@
             <div class="description">{{blog.description}}</div>
           </div>
           <div class="buttonWrapper">
-            <a class="primaryButton waves-effect" [routerLink]="['/blog']" [queryParams]="{id: blog.id}">Read More</a>
+            <a class="primaryButton waves-effect" [routerLink]="['/blog']" [queryParams]="{id: blog.id}">Baca</a>
             <div *ngIf="currentUserId" class="likeIconContainer">
                <i class="small material-icons" *ngIf="checkIfCurrentUserLiked(blog)"  (click)="minusLikes(blog)" >favorite</i>
                <i class="small material-icons"  *ngIf="!checkIfCurrentUserLiked(blog)" (click)="addLikes(blog)">favorite_border</i>
@@ -73,9 +80,9 @@
         </div>
       </div>
 
-      <div *ngIf="(blogs | async | genrePipe: activeChip.genre).length === 0" style="width: 100%;">
+      <div *ngIf="(blogs | async | genrePipe: activeChip.genre)?.length === 0" style="width: 100%;">
         <div class="noMatchBox">
-           oops, there is no post with this category yet!
+           oops, belum ada postingan dengan kategori ini!
         </div>
       </div>
 

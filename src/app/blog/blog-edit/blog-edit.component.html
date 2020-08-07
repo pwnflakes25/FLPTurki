@@ -3,7 +3,7 @@
   <div class="blogImage" [style.background-image]="'url('+imageDisplayUrl+')'" (click)="filePicker.click()">
     <div class="center imageUploadBox" *ngIf="imageDisplayUrl === ''">
       <i class="large material-icons">file_upload</i>
-      <div style="color: white; font-size: 18px;">Click here to upload An image for your blog</div>
+      <div style="color: white; font-size: 18px;">Click disini untuk upload gambar</div>
     </div>
   </div>
   <input type="file" #filePicker accept="image/*" style="display: none;" (change)="onFileSelected($event)" name="image"/>
@@ -11,10 +11,10 @@
 
     <div [ngSwitch]="edit" class="header">
       <div *ngSwitchCase="true" class="subTitle">
-        Edit Page
+        Halaman Edit
       </div>
       <div *ngSwitchCase="false" class="subTitle">
-        Create Page
+       Karangan baru
       </div>
     </div>
   <form [formGroup]="blogForm" class="">
@@ -32,14 +32,14 @@
       <div class="row">
         <div class="input-field col s12">
          <input placeholder="Write your blog title here..." type="text" id="titleInput" formControlName="title">
-          <label class="active" for="titleInput">Title</label>
+          <label class="active" for="titleInput">Titel</label>
         </div>
       </div>
 
       <div class="row">
         <div class="input-field col s12">
-          <input placeholder="What is your blog about...?" type="text" id="descInput"  formControlName="description">
-          <label class="active" for="descInput">Description</label>
+          <input placeholder="Tulisan ini tentang...?" type="text" id="descInput"  formControlName="description">
+          <label class="active" for="descInput">Deskripsi Pendek</label>
         </div>
       </div>
 
@@ -51,15 +51,15 @@
 
       <div class="row">
         <div class="input-field col s12">
-          <textarea placeholder="Write your summary here..." id="summaryInput" formControlName="summary" class="materialize-textarea"></textarea>
-           <label for="summaryInput" class="active">Summary..</label>
+          <textarea placeholder="Singkatnya..." id="summaryInput" formControlName="summary" class="materialize-textarea"></textarea>
+           <label for="summaryInput" class="active">Ringkasan..</label>
         </div>
       </div>
 
       <div class="row referencesBar">
           <div class="input-field col s11">
-             <input placeholder="Add Reference" #referenceInput type="text" id="referenceInput">
-             <label for="referenceInput" class="active">Add Reference</label>
+             <input placeholder="Tulisan ini terinspirasi dari berikut.." #referenceInput type="text" id="referenceInput">
+             <label for="referenceInput" class="active">Referensi</label>
               <i class="material-icons prefix" id="addReferenceButton" (click)="addReference(referenceInput.value)">add</i>
           </div>
       </div>
@@ -72,13 +72,13 @@
 
 
       <div class="buttonWrapper">
-        <a class="primaryButton" (click)="onSaveBlog()"> <i class="material-icons">save</i> Save</a>
+        <a class="primaryButton" (click)="onSaveBlog()"> <i class="material-icons">save</i> Simpan</a>
         <div [ngSwitch]="edit" >
         <a class="primaryButton" *ngSwitchCase="true" (click)="onUpdateBlog()">
           <i class="material-icons">update</i> Update
         </a>
         <a class="primaryButton" *ngSwitchCase="false" (click)="onPublishBlog()">
-          <i class="material-icons" >send</i> Publish
+          <i class="material-icons" >send</i> Publikasi
         </a>
         </div>
       </div>

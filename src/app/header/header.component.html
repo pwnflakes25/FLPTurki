@@ -3,19 +3,19 @@
     <a  class="brand-logo left"></a>
     <a data-target="mobile-demo" *ngIf="isOnBlog === false" class="sidenav-trigger hide-on-med-and-up"><i class="material-icons">menu</i></a>
     <ul class="right hide-on-med-and-down">
-      <li><a routerLink="/">Home</a></li>
-      <li *ngIf="(authService.user$ | async) === null"><a routerLink="/auth/signup">Sign Up</a></li>
-      <li *ngIf="(authService.user$ | async) === null"><a routerLink="/auth/signin">Sign In</a></li>
-      <li *ngIf="authService.user$ | async"  (click)="onSignOut()"><a>Sign Out</a></li>
-      <li *ngIf="authService.user$ | async" (click)="goToProfile()"><a><i class="material-icons right" style="cursor: pointer">account_circle</i>Profile</a></li>
+      <li><a routerLink="/">Beranda</a></li>
+      <li *ngIf="(authService.user$ | async) === null"><a routerLink="/auth/signup">Daftar</a></li>
+      <li *ngIf="(authService.user$ | async) === null"><a routerLink="/auth/signin">Masuk</a></li>
+      <li *ngIf="authService.user$ | async"  (click)="onSignOut()"><a>Keluar</a></li>
+      <li *ngIf="authService.user$ | async" (click)="goToProfile()"><a><i class="material-icons right" style="cursor: pointer">account_circle</i>Profil</a></li>
     </ul>
   </div>
 </nav>
 
 <ul class="sidenav" id="mobile-demo">
-  <li><a routerLink="/">Home</a></li>
-  <li class="sidenav-close" *ngIf="(authService.user$ | async) === null"><a routerLink="/auth/signup">Sign Up</a></li>
-  <li class="sidenav-close" *ngIf="(authService.user$ | async) === null"><a routerLink="/auth/signin">Sign In</a></li>
-  <li class="sidenav-close" *ngIf="authService.user$ | async"  (click)="onSignOut()"><a>Sign Out</a></li>
-  <li class="sidenav-close" *ngIf="authService.user$ | async" (click)="goToProfile()"><a>Profile</a></li>
+  <li><a routerLink="/">Beranda</a></li>
+  <li class="sidenav-close" *ngIf="(authService.user$ | async) === null"><a routerLink="/auth/signup">Daftar</a></li>
+  <li class="sidenav-close" *ngIf="(authService.user$ | async) === null"><a routerLink="/auth/signin">Masuk</a></li>
+  <li class="sidenav-close" *ngIf="authService.user$ | async"  (click)="onSignOut()"><a>Keluar</a></li>
+  <li class="sidenav-close" *ngIf="authService.user$ | async" (click)="goToProfile()"><a>Profil</a></li>
 </ul>
