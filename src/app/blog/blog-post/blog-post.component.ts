@@ -25,10 +25,11 @@ author: Author;
   ngOnInit(): void {
     this.route.queryParams.subscribe(params => {
     let id = params['id'];
+    this.currentBlogId = id;
     this.bs.getBlogById(id).subscribe(blog => {
       this.blog = blog;
       this.isLoading = false;
-      this.as.getAuthorById(blog.authorId).subscribe(author => {
+      this.as.getAuthorById(blog.authorId)?.subscribe(author => {
         this.author = author;
       })
     })

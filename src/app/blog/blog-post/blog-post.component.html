@@ -49,5 +49,9 @@
          <p *ngFor='let reference of blog.references; let i = index;'>{{reference}}</p>
       </div>
     </div>
+    <div class="divider"></div>
+    <app-comment [blogId]="currentBlogId" class="container"></app-comment>
+
   </div>
+
 </section>

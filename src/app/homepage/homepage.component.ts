@@ -59,11 +59,11 @@ activeChip: { index: number; genre: string } = {
     var timer = null;
       window.addEventListener('scroll', () => {
           if(timer !== null) {
-            document.getElementById('fab').classList.add('secondary-background');
+            document.getElementById('fab')?.classList.add('secondary-background');
             clearTimeout(timer);
           }
           timer = setTimeout(() => {
-            document.getElementById('fab').classList.remove('secondary-background');
+            document.getElementById('fab')?.classList.remove('secondary-background');
           }, 1000);
       }, false);
   }

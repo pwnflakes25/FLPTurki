@@ -26,6 +26,7 @@ import { HttpClientModule} from '@angular/common/http';
 import { SortAndLimitPipePipe } from './homepage/sort-and-limit-pipe.pipe';
 import { GenrePipePipe } from './homepage/genre-pipe.pipe';
 import { IsPublishedPipe } from './homepage/is-published.pipe';
+import { CommentComponent } from './blog/comment/comment.component';
 
 
 @NgModule({
@@ -39,7 +40,8 @@ import { IsPublishedPipe } from './homepage/is-published.pipe';
     AuthComponent,
     SortAndLimitPipePipe,
     GenrePipePipe,
-    IsPublishedPipe
+    IsPublishedPipe,
+    CommentComponent
   ],
   imports: [
     BrowserModule,

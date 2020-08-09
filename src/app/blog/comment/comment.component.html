@@ -1,0 +1,47 @@
+<div class="content">
+
+  <div class="form">
+    <form [formGroup]="commentForm">
+      <div class="row">
+        <div class="input-field col s10">
+         <input placeholder="Komen disini..." type="text" id="commentInput" formControlName="message">
+          <label class="active" for="commentInput">Komentar</label>
+          <span><a class="primaryButton" (click)="onSubmitComment()">Submit</a></span>
+        </div>
+      </div>
+    </form>
+  </div>
+
+  <div class="commentContainer" *ngIf="comments">
+    <div class="commentBox" *ngFor="let comment of comments; let i = index">
+       <div class="commenterDetail">
+        <span>{{comment.commenterName}}</span> {{comment.date.toDate() | date}}
+       </div>
+       <div class="messageBox" id="commentMessage">
+         {{comment.message}}
+       </div>
+
+       <div class="actionBar">
+         <div class="likeBox">
+            <p>{{comment.likes}} <i class="material-icons" (click)="addLikeToComment(comment)" [ngStyle]="{'color': (hasUserLiked(comment)? '#D9C2BA' : 'grey') }">thumb_up</i></p>
+         </div>
+         <div class="editBox">
+           <i class="material-icons" [matMenuTriggerFor]="commentMenu">more_vert</i>
+           <mat-menu #commentMenu="matMenu" yPosition="above" xPosition="after">
+             <ul>
+               <li mat-menu-item class="menuItem" (click)="onDeleteComment(comment.id)" *ngIf="currentUserId && currentUserId === comment.commenterId">
+                   <i class="material-icons" style="vertical-align: middle; color: red; padding: 0;">cancel</i>
+                   Delete
+               </li>
+               <li mat-menu-item class="menuItem" (click)="onCopyComment('commentMessage')">
+                   <i class="material-icons" style="vertical-align: middle;">content_copy</i>
+                   Copy Text
+               </li>
+             </ul>
+           </mat-menu>
+         </div>
+       </div>
+
+    </div>
+  </div>
+</div>

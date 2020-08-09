@@ -1,0 +1,61 @@
+.content {
+
+
+  .primaryButton {
+    max-width: 20%;
+    box-shadow: none;
+  }
+
+  .commentBox {
+    border-bottom-style: solid;
+    border-bottom-width: 2px;
+    border-bottom-color: #f0f0f4;
+    margin-top: 1rem;
+  }
+
+  .commenterDetail {
+    margin-bottom: 8px;
+    color: grey;
+
+    span {
+      font-weight: bold;
+      color: black;
+    }
+  }
+
+  .actionBar {
+    font-size: 16px;
+    display: flex;
+    width: 100%;
+  }
+
+  .editBox {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    .material-icons {
+      vertical-align: middle;
+      cursor: pointer;
+      color: grey;
+      margin-left: 8px;
+    }
+  }
+
+   .likeBox {
+
+
+     .material-icons {
+       vertical-align: text-bottom;
+       margin-left: 8px;
+       color: grey;
+       cursor: pointer;
+     }
+   }
+
+
+
+
+
+}
