@@ -1,6 +1,7 @@
 const express = require("express");
 const cors = require("cors");
 const bodyParser = require("body-parser");
+const compression = require('compression');
 const app = express();
 const path = require('path');
 
@@ -18,7 +19,7 @@ const forceSSL = function() {
 
 app.use(cors({origin: "*"}));
 app.use(bodyParser.json());
-app.use(forceSSL());
+app.use(compression());
 
 
 
