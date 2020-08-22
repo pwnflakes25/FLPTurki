@@ -8,7 +8,7 @@
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "postinstall": "ng build --prod --aot --vc --cc --dop --buildOptimizer"
+    "postinstall": "ng build --prod --aot --vendorChunk --deleteOutputPath --buildOptimizer"
   },
   "private": true,
   "dependencies": {
