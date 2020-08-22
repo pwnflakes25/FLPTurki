@@ -1,8 +1,7 @@
-import { Component, OnInit, AfterViewInit, OnDestroy, HostListener } from '@angular/core';
+import { Component, OnInit, AfterViewInit, OnDestroy } from '@angular/core';
 import {Blog} from '../blog/blog.model';
 import { BlogService } from "../blog.service";
 import {Observable, Subscription} from 'rxjs';
-import {take} from 'rxjs/operators';
 import {AuthService} from '../auth/auth.service';
 import {genres} from '../blog/blog-edit/genres';
 declare const M;
@@ -28,7 +27,6 @@ activeChip: { index: number; genre: string } = {
   constructor(private bs: BlogService, private authService: AuthService) { }
 
   ngOnInit(): void {
-    console.log(this.blogs);
     this.blogs = this.bs.getBlogs();
     this.userSub = this.authService.getCurrentUser().subscribe((user: any) => {
       this.currentUserId = user.uid;

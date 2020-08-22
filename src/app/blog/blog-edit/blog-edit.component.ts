@@ -1,6 +1,6 @@
 import { Component, OnInit, AfterViewInit } from '@angular/core';
-import { Router, ActivatedRoute, ParamMap } from '@angular/router';
-import { FormGroup, FormControl, FormArray } from '@angular/forms';
+import { Router, ActivatedRoute} from '@angular/router';
+import { FormGroup, FormControl } from '@angular/forms';
 import { AngularEditorConfig } from '@kolkov/angular-editor';
 import { BlogService } from "../../blog.service";
 import {AuthService} from '../../auth/auth.service';

@@ -1,7 +1,6 @@
 import { Component, OnInit, AfterViewInit } from '@angular/core';
 import {AuthService} from '../auth/auth.service';
-import { Router, ActivatedRoute, NavigationStart, Event, NavigationEnd } from '@angular/router';
-import { Location } from "@angular/common";
+import { Router} from '@angular/router';
 import {Subscription} from 'rxjs';
 declare const M;
 
@@ -16,7 +15,7 @@ private user;
 userSub: Subscription;
 isOnBlog:boolean = false;
 
-  constructor(public authService: AuthService, private router: Router, private location: Location) { }
+  constructor(public authService: AuthService, private router: Router) { }
 
   ngOnInit(): void {
     this.authService.getCurrentUser().subscribe(user => {

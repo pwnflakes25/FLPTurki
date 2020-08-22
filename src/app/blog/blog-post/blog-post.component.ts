@@ -1,11 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { Router, ActivatedRoute, ParamMap } from '@angular/router';
+import { ActivatedRoute} from '@angular/router';
 import { BlogService } from "../../blog.service";
 import { AuthorService } from "../../author/author.service";
 import {Blog} from '../blog.model';
 import {Author} from '../../author/author.model';
 import {Subscription,Observable} from 'rxjs';
-import {map, concatMap} from 'rxjs/operators';
 
 
 @Component({
