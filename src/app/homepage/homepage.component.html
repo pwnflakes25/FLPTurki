@@ -46,7 +46,7 @@
    </div>
 
 
-   <div class="spinnerContainer" *ngIf='(blogs | async) === null'>
+   <div class="spinnerContainer" *ngIf='(blogs | async) === undefined'>
      <div  class="preloader-wrapper big active">
        <div class="spinner-layer">
          <div class="circle-clipper left">

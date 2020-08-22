@@ -28,8 +28,9 @@ activeChip: { index: number; genre: string } = {
   constructor(private bs: BlogService, private authService: AuthService) { }
 
   ngOnInit(): void {
+    console.log(this.blogs);
     this.blogs = this.bs.getBlogs();
-    this.userSub = this.authService.getCurrentUser().subscribe(user => {
+    this.userSub = this.authService.getCurrentUser().subscribe((user: any) => {
       this.currentUserId = user.uid;
     })
   }
