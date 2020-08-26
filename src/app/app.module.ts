@@ -1,7 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { AngularFireModule } from '@angular/fire';
-import { AngularFireAnalyticsModule } from '@angular/fire/analytics';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { environment } from '../environments/environment';
 import { ReactiveFormsModule } from '@angular/forms';
@@ -27,6 +26,7 @@ import { SortAndLimitPipePipe } from './homepage/sort-and-limit-pipe.pipe';
 import { GenrePipePipe } from './homepage/genre-pipe.pipe';
 import { IsPublishedPipe } from './homepage/is-published.pipe';
 import { CommentComponent } from './blog/comment/comment.component';
+import { ServiceWorkerModule } from '@angular/service-worker';
 
 
 @NgModule({
@@ -49,13 +49,13 @@ import { CommentComponent } from './blog/comment/comment.component';
     AppRoutingModule,
     AngularFireModule.initializeApp(environment.firebase),
     AngularFirestoreModule,
-    AngularFireAnalyticsModule,
     ReactiveFormsModule,
     MatStepperModule,
     AngularEditorModule,
     HttpClientModule,
     MatMenuModule,
-    MatSelectModule
+    MatSelectModule,
+    ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production })
   ],
   providers: [BlogService, AuthorService, AuthService],
   bootstrap: [AppComponent]
